@@ -1,0 +1,314 @@
+/* Neurospace Coaching — bold & funky. Palette and type live in :root */
+@font-face{font-family:"Titan";src:url(fonts/titan-one-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Comfortaa";src:url(fonts/comfortaa-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(fonts/atkinson-hyperlegible-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Atkinson";src:url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --paper:#FFF7EA;
+  --ink:#111114;
+  --muted:#3d3d45;
+  /* "bright pop" palette. Previous: blue #00AFC7, teal #00BEAE, orange #FF8048, yellow #FCCB30, pink #FF7396, purple #C980DB */
+  --ghost:#66D7D1;   /* aqua */
+  --teal:#66D7D1;
+  --orange:#FF600E;  /* tang */
+  --lime:#EACE2C;    /* lemon */
+  --pink:#FF600E;    /* tang */
+  --lilac:#F5CEC7;   /* dust storm */
+  --night:#111114;
+  --b:3px solid var(--ink);
+  --shadow:6px 6px 0 var(--shade);
+  --radius:22px;
+  --wrap:1160px;
+  --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 90' preserveAspectRatio='none'%3E%3Cpath d='M0 90V52C240 -8 480 -8 720 40S1200 100 1440 30V90z'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font:400 1.125rem/1.65 "Atkinson",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink);text-decoration-thickness:2px;text-underline-offset:3px}
+h1,h2{font-family:"Titan","Comfortaa",system-ui,sans-serif;font-weight:400;line-height:1.02;letter-spacing:-.005em;margin:0 0 .45em}
+h3{font-family:"Comfortaa",system-ui,sans-serif;font-weight:700;line-height:1.2;margin:0 0 .5em;font-size:1.3rem}
+h1{font-size:clamp(2.6rem,6.4vw,5.3rem)}
+h2{font-size:clamp(2rem,4.2vw,3.3rem)}
+p{margin:0 0 1.1em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:#fff;padding:8px 12px;z-index:10}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px;box-shadow:0 0 0 6px var(--lime)}
+mark{background:none;color:var(--ghost);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+h1 mark{-webkit-text-stroke:3px var(--ink);text-shadow:6px 6px 0 var(--ink)}
+.band mark{color:#fff}
+
+/* header */
+.site-head{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:var(--b)}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:78px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:400 1.6rem "Titan","Comfortaa"}
+.brand img{height:42px;width:auto;transition:transform .2s}
+.brand:hover img{transform:rotate(-10deg) translateY(-3px)}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem;padding:8px 14px;border-radius:999px;border:2px solid transparent}
+.nav a:hover{border-color:var(--ink);background:var(--lime)}
+.nav a[aria-current=page]{background:var(--ink);color:var(--paper)}
+.menu-btn{display:none;background:var(--lime);border:var(--b);border-radius:999px;padding:6px 16px;font:700 1rem "Atkinson";color:var(--ink);cursor:pointer;box-shadow:3px 3px 0 var(--shade)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5em;background:var(--ghost);color:var(--ink);font:700 1.05rem "Atkinson";text-decoration:none;padding:13px 26px;border-radius:999px;border:var(--b);box-shadow:4px 4px 0 var(--shade);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shade)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--shade)}
+.btn.ghost-btn{background:#fff}
+.btn.lime{background:var(--lime)}
+.nav .btn{padding:8px 18px;margin-left:8px;box-shadow:3px 3px 0 var(--shade)}
+.nav .btn:hover{background:var(--ghost)}
+
+/* hero */
+.hero{padding:64px 0 96px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.eyebrow{display:inline-block;font:700 .85rem "Atkinson";letter-spacing:.1em;text-transform:uppercase;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:5px 14px;margin-bottom:20px}
+.hero p.lead,.page-hero p.lead{font-size:1.4rem;max-width:32ch;font-weight:700}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.blob{position:relative}
+.blob .frame{border-radius:220px 220px 26px 26px;overflow:hidden;aspect-ratio:4/5;background:var(--lilac);border:var(--b);box-shadow:12px 12px 0 var(--shade)}
+.blob .frame img{width:100%;height:100%;object-fit:cover}
+.sticker{position:absolute;z-index:2;background:var(--lime);border:var(--b);border-radius:999px;padding:12px 18px;font:400 1.15rem/1.1 "Titan";text-align:center;box-shadow:4px 4px 0 var(--shade);transform:rotate(8deg)}
+.sticker.s1{top:-14px;right:-10px}
+.sticker.s2{bottom:30px;left:-26px;background:var(--pink);transform:rotate(-7deg)}
+.page-hero{padding:72px 0 56px}
+
+
+/* sections + ghost-hem edges */
+section{padding:88px 0;position:relative}
+.band{background:var(--ghost)}
+.band.lime{background:var(--lime)}
+.band.pink{background:var(--pink)}
+.band.lilac{background:var(--lilac)}
+.band::before,.band::after{content:"";position:absolute;left:0;right:0;height:clamp(40px,6vw,90px);background:inherit;-webkit-mask:var(--wave) 0 0/100% 100% no-repeat;mask:var(--wave) 0 0/100% 100% no-repeat;pointer-events:none}
+.band::before{bottom:calc(100% - 1px)}
+.band::after{top:calc(100% - 1px);transform:scale(-1,-1)}
+.band{margin:clamp(40px,6vw,90px) 0}
+.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.split.flip{grid-template-columns:1.15fr .85fr}
+.photo{border-radius:var(--radius);overflow:hidden;background:var(--lilac);aspect-ratio:4/5;border:var(--b);box-shadow:10px 10px 0 var(--shade);transform:rotate(-1.5deg)}
+.split.flip .photo{transform:rotate(1.5deg)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo.wide{aspect-ratio:16/10}
+.prose{max-width:64ch}
+.prose ul{padding-left:1.1em}.prose li{margin-bottom:.5em}
+.intro{font-size:1.25rem;font-weight:700;max-width:60ch}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px;margin-top:40px}
+.card{background:#fff;border:var(--b);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.card p:last-child{margin-bottom:0}
+.cards .card:nth-child(6n+1){background:#fff}
+.cards .card:nth-child(6n+2){background:var(--lime)}
+.cards .card:nth-child(6n+3){background:var(--lilac)}
+.cards .card:nth-child(6n+4){background:var(--ghost)}
+.cards .card:nth-child(6n+5){background:var(--pink)}
+.cards .card:nth-child(6n+6){background:#fff}
+
+.band.lime .cards .card:nth-child(6n+2){background:#fff}
+.num{display:inline-grid;place-items:center;width:44px;height:44px;border:var(--b);border-radius:50%;background:var(--paper);font:400 1.2rem "Titan";margin-bottom:14px}
+.values .card{text-align:left}
+.values .card h3{font:400 2rem "Titan"}
+
+/* checks list */
+.checks{list-style:none;padding:0}
+.checks li{padding-left:36px;position:relative;margin-bottom:.7em}
+.checks li::before{content:"✓";position:absolute;left:0;top:.1em;width:24px;height:24px;border-radius:50%;background:var(--lime);border:2px solid var(--ink);display:grid;place-items:center;font-weight:700;font-size:.85rem;line-height:1}
+
+/* timeline (training) */
+.timeline{border-left:3px dashed var(--ink);margin-left:8px;padding-left:30px}
+.timeline .item{position:relative;margin-bottom:34px;background:#fff;border:var(--b);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.timeline .item::before{content:"";position:absolute;left:-45px;top:24px;width:24px;height:24px;border-radius:50%;background:var(--pink);border:var(--b)}
+.timeline .item p:last-child{margin:0}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.price{background:#fff;border:var(--b);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.price:nth-child(1){background:var(--lime)}
+.price:nth-child(3){background:var(--pink)}
+.price .tag{align-self:flex-start;font:700 .85rem "Atkinson";letter-spacing:.1em;text-transform:uppercase;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 12px}
+.price h3{font:400 2.2rem "Titan";margin:.4em 0 .4em}
+.price dl{margin:auto 0 0;border-top:3px solid var(--ink);padding-top:16px}
+.price dt{font-size:.95rem;font-weight:700}
+.price dd{margin:0 0 10px;font:400 1.7rem "Titan"}
+.price.featured{background:var(--ink);color:var(--paper);transform:translateY(-14px) rotate(-1deg);box-shadow:8px 8px 0 var(--ghost)}
+.price.featured .tag{background:var(--ghost);color:var(--ink)}
+.price.featured dl{border-color:var(--paper)}
+
+/* CTA */
+.cta{background:var(--ink);color:var(--paper);border:var(--b);border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;box-shadow:12px 12px 0 var(--ghost)}
+.cta h2{color:var(--lime)}
+.cta p{margin:0;font-size:1.2rem}
+.cta a.mail{color:var(--ghost);font-weight:700;word-break:break-all}
+.cta .eyebrow{background:var(--pink);color:var(--ink);border-color:var(--paper)}
+.cta .ghost-art{width:130px}
+.cta-wrap{padding:40px 0 100px}
+
+/* legal */
+.legal{max-width:780px}
+.legal h2{font-size:1.9rem;margin-top:1.6em}
+.legal h3{margin-top:1.4em}
+.legal table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 1.4em;font-size:1rem;background:#fff;border:var(--b);border-radius:16px;overflow:hidden}
+.legal th,.legal td{text-align:left;padding:12px 14px;border-bottom:2px solid var(--ink);vertical-align:top}
+.legal tr:last-child td{border-bottom:0}
+.legal th{background:var(--lime)}
+
+/* footer */
+.site-foot{background:var(--ink);color:#e7e3da;padding:72px 0 32px;font-size:1rem;position:relative}
+.site-foot::before{content:"";position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:clamp(40px,6vw,90px);background:var(--ink);-webkit-mask:var(--wave) 0 0/100% 100% no-repeat;mask:var(--wave) 0 0/100% 100% no-repeat;transform:scaleX(-1)}
+.site-foot{margin-top:clamp(40px,6vw,90px)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.site-foot h3{color:var(--lime);font:400 1.3rem "Titan"}
+.site-foot a{color:#e7e3da;text-decoration:none}.site-foot a:hover{color:var(--ghost)}
+.site-foot ul{list-style:none;padding:0;margin:0}.site-foot li{margin-bottom:8px}
+.site-foot .brand{color:var(--paper);margin-bottom:14px}
+.foot-base{border-top:2px solid #3a3a42;margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.92rem}
+
+/* ghost float */
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+.float{animation:bob 4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.float{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:900px){
+  .hero-grid,.split,.split.flip,.foot-grid{grid-template-columns:1fr}
+  .split,.split.flip{gap:40px}
+  .split .photo{max-width:440px}
+  .price-grid{grid-template-columns:1fr}
+  .price.featured{transform:none}
+  .cta{grid-template-columns:1fr;padding:40px 26px}
+  .cta .ghost-art{display:none}
+  .sticker.s2{left:-6px}
+  .menu-btn{display:block}
+  .nav{display:none;position:absolute;top:78px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);padding:12px 24px 24px;border-bottom:var(--b)}
+  .nav.open{display:flex}
+  .nav .btn{margin:8px 0 0;justify-content:center}
+  section{padding:64px 0}
+}
+html{overflow-x:clip}
+.card h3{font:400 1.45rem/1.15 "Titan","Comfortaa"}
+
+/* competency pills */
+.pills{list-style:none;padding:0;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.pill{border:2px solid var(--ink);border-radius:999px;padding:6px 16px;font:700 .98rem "Atkinson";background:#fff;box-shadow:3px 3px 0 var(--shade)}
+.pill.ghost{background:var(--ghost)}.pill.teal{background:var(--teal)}.pill.orange{background:var(--orange)}.pill.lime{background:var(--lime)}.pill.pink{background:var(--pink)}.pill.lilac{background:var(--lilac)}
+/* scrolling specializations row */
+.pill-row{display:flex;overflow:hidden;margin-top:56px;padding:6px 0 10px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pill-row .pills{margin:0;flex:none;flex-wrap:nowrap;gap:14px;padding-right:14px;animation:pills 70s linear infinite}
+.pill-row:hover .pills{animation-play-state:paused}
+.pill-row .pill{font-size:1.1rem;padding:10px 22px;white-space:nowrap}
+@keyframes pills{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.pill-row{overflow-x:auto}.pill-row .pills{animation:none}.pill-row .pills[aria-hidden]{display:none}}
+
+/* ===== Palette v4 ("bold"): lime, traffic cone, carebare fuzz, internet blue, bratz purple, goth ===== */
+:root{
+  --lime:#D3FF33; --cone:#FF5B22; --fuzz:#AEE6ED; --blue:#3939FF; --purple:#DBB8FF; --goth:#191919;
+  --ink:#191919; --shade:#191919; --fg:#191919; --paper:#FFF7EA; --surface:#fff; --foot:#191919; --line:#191919;
+  --ghost:var(--blue); --pink:var(--cone); --orange:var(--cone); --lilac:var(--purple); --teal:var(--fuzz);
+}
+body{background:var(--paper);color:var(--fg)}
+.card,.price,.timeline .item,.pill,.eyebrow,.sticker,.btn,.legal table,.menu-btn{color:var(--ink)}
+.card,.timeline .item,.legal table,.eyebrow,.btn.ghost-btn{background-color:var(--surface)}
+.band{--shade:var(--ink);color:var(--ink)}
+.band.blue,.band:not(.lime):not(.pink):not(.lilac){background:var(--blue);color:#fff}
+.band:not(.lime):not(.pink):not(.lilac) .card{color:var(--ink)}
+.band.pink{background:var(--cone)} .band.lilac{background:var(--purple)} .band.lime{background:var(--lime)}
+mark,.band mark{color:var(--lime);-webkit-text-stroke:2px var(--ink)}
+h1 mark{-webkit-text-stroke:3px var(--ink);text-shadow:6px 6px 0 var(--ink)}
+.band.lime mark{color:var(--blue);-webkit-text-stroke:0;text-shadow:3px 3px 0 var(--ink)}
+.btn{background:var(--lime)} .btn:hover{background:var(--lime)}
+.nav .btn,.nav .btn:hover{background:var(--lime)}
+.cards .card:nth-child(6n+1){background:var(--surface)}
+.cards .card:nth-child(6n+2){background:var(--lime)}
+.cards .card:nth-child(6n+3){background:var(--purple)}
+.cards .card:nth-child(6n+4){background:var(--fuzz)}
+.cards .card:nth-child(6n+5){background:var(--cone)}
+.cards .card:nth-child(6n+6){background:var(--blue);color:#fff}
+.band.lime .cards .card:nth-child(6n+2){background:var(--surface)}
+.pill.ghost{background:var(--blue);color:#fff}.pill.teal{background:var(--fuzz)}.pill.lilac{background:var(--purple)}
+.price:nth-child(1){background:var(--lime)} .price:nth-child(3){background:var(--purple)}
+.price.featured{background:var(--blue);color:#fff;box-shadow:8px 8px 0 var(--shade)}
+.price.featured .tag{background:var(--lime);color:var(--ink)} .price.featured dl{border-color:#fff}
+.cta{background:var(--goth);box-shadow:12px 12px 0 var(--lime)}
+.cta a.mail{color:var(--lime)} .cta .eyebrow{background:var(--cone)}
+.site-head{background:var(--paper);border-bottom-color:var(--line)}
+.nav a,.brand{color:var(--fg)}
+.nav a:hover{background:var(--lime);color:var(--ink);border-color:var(--ink)}
+.nav a[aria-current=page]{background:var(--fg);color:var(--paper)}
+.site-foot{background:var(--foot)} .site-foot::before{background:var(--foot)}
+.site-foot h3{color:var(--lime)}
+.blob .frame,.photo{background:var(--purple)}
+.legal th{background:var(--lime)}
+.timeline{border-left-color:var(--fg)} .timeline .item::before{background:var(--cone)}
+.band .timeline{border-left-color:var(--ink)}
+a{color:inherit}
+.ghost-dk{display:none}.pill-row{-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+
+.site-foot .brand,.site-foot{color:#F5F2EA}
+.nav a.btn,.nav a.btn:hover{color:var(--ink)}
+
+/* ===== Palette v5: neon (main), nude (secondary), violet + cream (tertiary) — light mode ===== */
+:root{--lime:#DBFE53;--cone:#B4A384;--blue:#BC94FF;--purple:#BC94FF;--fuzz:#F7F2EA;--paper:#F7F2EA;--surface:#fff;--goth:#191919}
+.band.blue,.band:not(.lime):not(.pink):not(.lilac){background:var(--purple);color:var(--ink)}
+.band.pink{background:var(--cone)}
+.cards .card:nth-child(6n+4){background:var(--cone)}
+.cards .card:nth-child(6n+5){background:var(--ink);color:var(--paper)}
+.cards .card:nth-child(6n+6){background:var(--surface);color:var(--ink)}
+.band .cards .card:nth-child(6n+5){--shade:var(--ink)}
+.pill.ghost{background:var(--purple);color:var(--ink)}.pill.teal{background:var(--surface)}.pill.lilac{background:var(--surface)}.pill.pink,.pill.orange{background:var(--cone)}
+.price.featured{background:var(--ink);color:var(--paper)}
+.price.featured .tag{background:var(--lime)} .price.featured dl{border-color:var(--paper)}
+.price:nth-child(3){background:var(--purple)}
+.cta{background:var(--ink);color:var(--paper);box-shadow:12px 12px 0 var(--purple)}
+.cta .eyebrow{background:var(--purple)}
+.timeline .item::before{background:var(--lime)}
+.sticker.s2{background:var(--purple)}
+.blob .frame,.photo{background:var(--cone)}
+
+/* light-only: no big dark blocks */
+.cards .card:nth-child(6n+5){background:var(--purple);color:var(--ink)}
+.cards .card:nth-child(6n+3){background:var(--surface)}
+.price.featured{background:var(--purple);color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.price.featured dl{border-color:var(--ink)}
+.cta{background:var(--lime);color:var(--ink);box-shadow:12px 12px 0 var(--ink)}
+.cta h2{color:var(--ink)} .cta a.mail{color:var(--ink)} .cta .eyebrow{background:var(--surface);border-color:var(--ink)}
+.cta .ghost-art img{content:url(img/ghost-mark.webp)}
+.site-foot,.site-foot::before{background:var(--cone)}
+.site-foot,.site-foot .brand,.site-foot a,.site-foot h3{color:var(--ink)}
+.site-foot a:hover{color:var(--ink);text-decoration:underline}
+.site-foot .brand img{content:url(img/ghost-mark.webp)}
+.foot-base{border-top-color:var(--ink)}
+
+:root{color-scheme:light}
+
+/* ===== Palette v6 "One Night in Ibiza": lime, orchid, periwinkle, peach, cream, black ===== */
+:root{--lime:#E8FC87;--orchid:#EDB4F8;--purple:#BBB4FE;--cone:#FEB985;--paper:#FFFEEC;--ink:#141414;--shade:#141414;--fg:#141414;--surface:#fff}
+.band:not(.lime):not(.pink):not(.lilac){background:var(--purple)}
+.band.pink{background:var(--cone)} .band.lilac{background:var(--orchid)} .band.lime{background:var(--lime)}
+.cards .card:nth-child(6n+1){background:var(--surface)}
+.cards .card:nth-child(6n+2){background:var(--lime)}
+.cards .card:nth-child(6n+3){background:var(--orchid)}
+.cards .card:nth-child(6n+4){background:var(--purple)}
+.cards .card:nth-child(6n+5){background:var(--cone);color:var(--ink)}
+.cards .card:nth-child(6n+6){background:var(--surface)}
+.band.lime .cards .card:nth-child(6n+2){background:var(--surface)}
+.pill.ghost{background:var(--purple)} .pill.pink,.pill.orange{background:var(--cone)} .pill.lilac{background:var(--orchid)} .pill.teal{background:var(--surface)}
+.price:nth-child(1){background:var(--lime)} .price.featured{background:var(--purple)} .price:nth-child(3){background:var(--orchid)}
+.sticker.s2{background:var(--orchid)}
+.blob .frame,.photo{background:var(--orchid)}
+.site-foot,.site-foot::before{background:var(--purple)}
+.timeline .item::before{background:var(--cone)}
+.nav a.btn[aria-current=page]{background:var(--lime);color:var(--ink)}
+/* contact form */
+.contact-form{display:grid;gap:14px;margin-top:8px}
+.contact-form label{display:grid;gap:6px;font-weight:700}
+.contact-form input,.contact-form textarea{font:400 1.05rem "Atkinson";padding:12px 14px;border:var(--b);border-radius:14px;background:var(--paper);color:var(--ink)}
+.contact-form input:focus,.contact-form textarea:focus{outline:3px solid var(--purple);outline-offset:1px}
+.contact-form .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.98rem}
+.contact-form .check input{width:20px;height:20px;margin-top:3px;flex:none}
+.contact-form .btn{justify-self:start;cursor:pointer}
+.contact-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-note{font-size:.95rem;margin:0}
+.form-status{margin:0;font-weight:700}

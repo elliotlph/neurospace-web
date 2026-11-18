@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact | Neurospace Coaching</title>
+<meta name="description" content="Get in touch with Neurospace Coaching or book a free consultation.">
+<meta property="og:title" content="Contact | Neurospace Coaching">
+<meta property="og:description" content="Get in touch with Neurospace Coaching or book a free consultation.">
+<meta property="og:image" content="https://neurospacecoaching.com/assets/img/logo-social.png">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="preload" href="assets/fonts/titan-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head" id="top">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html"><img class="ghost-lt" src="assets/img/ghost-mark.webp" alt="" width="210" height="370"><span>Neurospace</span></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main"><a href="about.html">About</a><a href="services.html">Services</a><a href="approach.html">Approach</a><a href="sliding-scale.html">Sliding Scale</a><a class="btn" href="contact.html" aria-current=page>Get started</a></nav>
+  </div>
+</header>
+<main id="main">
+
+<section class="page-hero"><div class="wrap hero-grid" style="align-items:start">
+  <div>
+    <span class="eyebrow">Contact</span>
+    <h1>Let’s Get <mark>Started</mark></h1>
+    <p class="lead">If you’re interested in starting coaching with me or have questions, please reach out and I will be excited to connect.</p>
+    <div class="card" style="margin-top:28px">
+      <h3>Radical Coaching for Weirdos</h3>
+      <p><strong>Email:</strong> <a href="mailto:elliot@neurospacecoaching.com">elliot@neurospacecoaching.com</a><br><strong>Hours:</strong> Monday–Thursday, 2pm–9pm CET</p>
+      <a class="btn" href="https://calendly.com/elliot_lphelt/free-consultation" target="_blank" rel="noopener">Book a free consultation ↗</a>
+    </div>
+  </div>
+  <form class="card contact-form" id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+    <h3>Send me a message</h3>
+    <p class="form-note">A short note about what you're looking for is enough. Please keep sensitive details for our free consultation.</p>
+    <label>Name<input name="name" autocomplete="name" required></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required></label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+    <label class="check"><input type="checkbox" name="consent" required><span>I've read the <a href="privacy-policy.html">privacy policy</a> and agree that my message is used to answer my enquiry.</span></label>
+    <button class="btn" type="submit">Send message</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+<script>
+const f=document.getElementById('form'),st=f.querySelector('.form-status');
+f.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!f.checkValidity()){st.textContent='Please fill in every field and tick the box.';f.reportValidity&&f.reportValidity();return}
+  const btn=f.querySelector('button');btn.disabled=true;st.textContent='Sending…';
+  try{
+    const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    if(!r.ok)throw 0;
+    f.reset();st.textContent='Thanks! Your message is on its way. I usually reply within a couple of working days.';
+  }catch(_){st.innerHTML='Sorry, that didn't send. Please email me at <a href="mailto:elliot@neurospacecoaching.com">elliot@neurospacecoaching.com</a>.'}
+  btn.disabled=false;
+});
+</script>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html"><img src="assets/img/ghost-mark-light.webp" alt="" width="210" height="370"><span>Neurospace Coaching</span></a>
+        <p>Radical coaching for weirdos. Queer and neurodivergent centered, based in Berlin, working virtually in English.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <ul><li><a href="about.html">About</a></li><li><a href="index.html#meet-elliot">Meet Elliot</a></li><li><a href="services.html">Services</a></li><li><a href="approach.html">Approach</a></li><li><a href="sliding-scale.html">Sliding Scale</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <p>Monday–Thursday, 2pm–9pm CET</p>
+        <h3>Email</h3>
+        <p><a href="mailto:elliot@neurospacecoaching.com">elliot@neurospacecoaching.com</a></p>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Neurospace Coaching</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="impressum.html">Impressum</a></span>
+    </div>
+  </div>
+</footer>
+<script>
+const b=document.querySelector('.menu-btn'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+const h=document.querySelector('.site-head');addEventListener('scroll',()=>h.classList.toggle('scrolled',scrollY>8),{passive:true});
+</script>
+</body>
+</html>
