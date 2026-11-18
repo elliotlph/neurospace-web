@@ -1,4 +1,8 @@
-# Cloudflare Pages configuration (overrides dashboard build settings)
+# Cloudflare Workers static-assets config: publish only the site/ folder
 name = "neurospace-coaching"
-pages_build_output_dir = "./site"
 compatibility_date = "2026-11-01"
+
+[assets]
+directory = "./site"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"
