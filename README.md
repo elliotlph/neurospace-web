@@ -17,5 +17,5 @@ Every push to `main` redeploys automatically. Config lives in `wrangler.toml`.
 
 ## Before launch
 - Street address is set (`ADDRESS` in `tools/build.py`); update it if moving to a coworking space
-- Paste the Formspree form ID (`FORM_ENDPOINT` in `tools/build.py`)
+- Contact form: Formspree form `xdegzbpl` (`FORM_ENDPOINT` in `tools/build.py`)
 - Set the "Last updated" date in the privacy policy
