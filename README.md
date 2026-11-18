@@ -16,6 +16,6 @@ Every push to `main` redeploys automatically. Config lives in `wrangler.toml`.
 - Build command: (empty) · Deploy command: `npx wrangler deploy` · Root directory: `/`
 
 ## Before launch
-- Add the street address (`ADDRESS` in `tools/build.py`) — used in the Impressum and privacy policy
+- Street address is set (`ADDRESS` in `tools/build.py`); update it if moving to a coworking space
 - Paste the Formspree form ID (`FORM_ENDPOINT` in `tools/build.py`)
 - Set the "Last updated" date in the privacy policy

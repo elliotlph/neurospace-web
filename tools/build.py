@@ -6,7 +6,7 @@ EMAIL = "elliot@neurospacecoaching.com"
 HOURS = "Monday–Thursday, 2pm–9pm CET"
 BOOK = "https://calendly.com/elliot_lphelt/free-consultation"
 FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"  # TODO Elliot: paste Formspree form ID
-ADDRESS = "[Straße und Hausnummer / street and number]<br>12055 Berlin<br>Deutschland / Germany"  # TODO Elliot: home address
+ADDRESS = "Mareschstraße 10<br>12055 Berlin<br>Deutschland / Germany"
 
 GHOST = """<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6c-12.2 0-21 9.4-21 21.5V55c0 1.6 1.8 2.5 3.1 1.5l4.4-3.3 4.6 3.6c.8.6 1.9.6 2.6 0L30 53.3l4.3 3.5c.8.6 1.9.6 2.6 0l4.6-3.6 4.4 3.3c1.3 1 3.1.1 3.1-1.5V27.5C53 15.4 44.2 6 32 6z" fill="#fff" stroke="#16171B" stroke-width="3" stroke-linejoin="round"/><circle cx="25" cy="28" r="3.2" fill="#16171B"/><circle cx="39" cy="28" r="3.2" fill="#16171B"/><path d="M27 36c2.8 2.6 7.2 2.6 10 0" fill="none" stroke="#16171B" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="34" r="2.6" fill="#27B6F8" opacity=".55"/><circle cx="44" cy="34" r="2.6" fill="#27B6F8" opacity=".55"/></svg>"""
 
