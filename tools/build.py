@@ -399,7 +399,7 @@ page("privacy-policy.html", "Privacy Policy | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap legal">
 <h1>Privacy Policy</h1>
-<p>Last updated: [DATE OF LAUNCH]</p>
+<p>Last updated: 19 November 2026</p>
 <p>Neurospace Coaching collects only the personal data needed to run this website, answer your questions and provide coaching and counselling services. We never sell your data, and we never use it for advertising.</p>
 <p>This policy explains what we collect when you visit neurospacecoaching.com, contact us or become a client, why we collect it, who helps us process it, and the rights you have. It applies to visitors and clients in the EU, the UK, the United States and anywhere else we work.</p>
 <p>In this policy, "we", "us" and "our" mean Neurospace Coaching. "You" means anyone who visits the site or uses our services.</p>
