@@ -44,8 +44,7 @@ h1 mark{-webkit-text-stroke:3px var(--ink);text-shadow:6px 6px 0 var(--ink)}
 .site-head{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:var(--b)}
 .head-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:78px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:400 1.6rem "Titan","Comfortaa"}
-.brand img{height:42px;width:auto;transition:transform .2s}
-.brand:hover img{transform:rotate(-10deg) translateY(-3px)}
+.brand img{height:42px;width:auto}
 .nav{display:flex;align-items:center;gap:6px}
 .nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem;padding:8px 14px;border-radius:999px;border:2px solid transparent}
 .nav a:hover{border-color:var(--ink);background:var(--lime)}
@@ -167,8 +166,6 @@ section{padding:88px 0;position:relative}
 .foot-base{border-top:2px solid #3a3a42;margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.92rem}
 
 /* ghost float */
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
-.float{animation:bob 4s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.float{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
 
 /* responsive */
@@ -194,13 +191,6 @@ html{overflow-x:clip}
 .pills{list-style:none;padding:0;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:10px}
 .pill{border:2px solid var(--ink);border-radius:999px;padding:6px 16px;font:700 .98rem "Atkinson";background:#fff;box-shadow:3px 3px 0 var(--shade)}
 .pill.ghost{background:var(--ghost)}.pill.teal{background:var(--teal)}.pill.orange{background:var(--orange)}.pill.lime{background:var(--lime)}.pill.pink{background:var(--pink)}.pill.lilac{background:var(--lilac)}
-/* scrolling specializations row */
-.pill-row{display:flex;overflow:hidden;margin-top:56px;padding:6px 0 10px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.pill-row .pills{margin:0;flex:none;flex-wrap:nowrap;gap:14px;padding-right:14px;animation:pills 70s linear infinite}
-.pill-row:hover .pills{animation-play-state:paused}
-.pill-row .pill{font-size:1.1rem;padding:10px 22px;white-space:nowrap}
-@keyframes pills{to{transform:translateX(-100%)}}
-@media (prefers-reduced-motion:reduce){.pill-row{overflow-x:auto}.pill-row .pills{animation:none}.pill-row .pills[aria-hidden]{display:none}}
 
 /* ===== Palette v4 ("bold"): lime, traffic cone, carebare fuzz, internet blue, bratz purple, goth ===== */
 :root{
@@ -244,8 +234,7 @@ h1 mark{-webkit-text-stroke:3px var(--ink);text-shadow:6px 6px 0 var(--ink)}
 .timeline{border-left-color:var(--fg)} .timeline .item::before{background:var(--cone)}
 .band .timeline{border-left-color:var(--ink)}
 a{color:inherit}
-.ghost-dk{display:none}.pill-row{-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-
+.ghost-dk{display:none}
 .site-foot .brand,.site-foot{color:#F5F2EA}
 .nav a.btn,.nav a.btn:hover{color:var(--ink)}
 
@@ -312,3 +301,52 @@ a{color:inherit}
 .contact-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .form-note{font-size:.95rem;margin:0}
 .form-status{margin:0;font-weight:700}
+
+
+/* ===== Nov 20 updates ===== */
+/* eyebrow: no pill (too close to Room 3) — bold label with a thick underline bar */
+.eyebrow{background:none!important;border:0!important;border-radius:0;padding:0 0 6px;box-shadow:none;font:700 .9rem "Atkinson";letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background-image:linear-gradient(var(--ink),var(--ink))!important;background-size:2.2em 4px!important;background-repeat:no-repeat!important;background-position:0 100%!important}
+.cta .eyebrow,.hero-photo .eyebrow{background-image:linear-gradient(currentColor,currentColor)!important}
+
+/* hero with the ghost photo as background */
+.hero-photo{position:relative;min-height:min(78vh,760px);display:flex;align-items:center;padding:96px 0;
+  background:linear-gradient(90deg,rgba(20,20,20,.62) 0%,rgba(20,20,20,.35) 42%,rgba(20,20,20,0) 68%),url(img/ghost-hero.webp) center/cover no-repeat;
+  border-bottom:var(--b);color:#FFFEEC}
+@media (max-width:700px){.hero-photo{background:linear-gradient(180deg,rgba(20,20,20,.55),rgba(20,20,20,.3)),url(img/ghost-hero-sm.webp) 60% center/cover no-repeat;min-height:70vh}}
+.hero-photo .wrap{position:relative;width:100%}
+.hero-copy{max-width:620px}
+.hero-photo .eyebrow{color:#FFFEEC}
+.hero-photo h1{color:#FFFEEC;text-shadow:4px 4px 0 var(--ink);font-size:clamp(2.6rem,5.6vw,4.6rem);margin-bottom:.35em}
+.hero-photo h1 mark{color:var(--lime);-webkit-text-stroke:3px var(--ink);text-shadow:5px 5px 0 var(--ink)}
+.hero-photo p.lead{color:#FFFEEC;font:400 clamp(1.5rem,2.9vw,2.3rem)/1.15 "Titan","Comfortaa";max-width:24ch;text-shadow:3px 3px 0 var(--ink)}
+.hero-photo .sticker.s2{position:absolute;right:24px;bottom:-130px;left:auto;top:auto;text-decoration:none;color:var(--ink);background:var(--orchid);font-size:1.3rem;padding:16px 22px;transform:rotate(-7deg)}
+@media (max-width:700px){.hero-photo .sticker.s2{bottom:-110px;right:16px;font-size:1.05rem}}
+
+/* who-this-is-for poster strip (static, typographic) */
+.who{padding:56px 0 64px;background:var(--paper)}
+.poster{margin:0;max-width:22em;font:400 clamp(1.8rem,4.6vw,3.6rem)/1.18 "Titan","Comfortaa";letter-spacing:-.01em}
+.poster .w{white-space:nowrap}
+.poster .w0{color:var(--ink)}
+.poster .w1{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.poster .w2{color:var(--ink);background:var(--purple);padding:0 .15em;box-shadow:inset 0 -.18em 0 var(--lime)}
+.poster .sep{display:inline-block;height:.62em;width:auto;margin:0 .32em;vertical-align:.02em}
+
+/* straighten sliding scale cards */
+.price.featured{transform:none}
+
+/* services photo: keep the person in frame */
+.photo.focus-right img{object-position:78% 50%}
+.split .photo.focus-right{align-self:center}
+
+/* contact: booking block */
+.book{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.book-card{display:grid;justify-items:start;gap:10px;background:var(--surface);color:var(--ink);text-decoration:none;border:var(--b);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
+.book-card img{height:56px;width:auto}
+.book-title{font:400 2rem/1.1 "Titan","Comfortaa"}
+.book-meta{font-weight:700}
+.book-card .btn{margin-top:8px}
+.book-card:hover .btn{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+@media (max-width:900px){.book{grid-template-columns:1fr;gap:28px}}
+.hero-photo h1{font-size:clamp(2.3rem,4.8vw,3.9rem)}
+.hero-photo p.lead{font-size:clamp(1.6rem,3.3vw,2.7rem);max-width:22ch}
+.hero-photo p.lead{max-width:19ch}

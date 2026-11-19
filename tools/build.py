@@ -94,7 +94,7 @@ CTA = f"""<div class="wrap cta-wrap"><div class="cta">
     <p>Reach out to schedule a consultation!<br><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a></p>
     <p style="margin-top:22px"><a class="btn ghost-btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consultation ↗</a></p>
   </div>
-  <div class="ghost-art float"><img src="assets/img/ghost-mark-light.webp" alt=""></div>
+  <div class="ghost-art"><img src="assets/img/ghost-mark-light.webp" alt=""></div>
 </div></div>"""
 
 VALUES = """<div class="cards values">
@@ -113,16 +113,17 @@ page("index.html",
      "Neurospace Coaching | Queer & Neurodivergent Coach and Couples Counsellor — Berlin, Germany",
      "Virtual life coaching and couples counselling for queer, neurodivergent and non-monogamous people. Based in Berlin, working in English across Europe, North America and beyond.",
      f"""
-<section class="hero"><div class="wrap hero-grid">
-  <div>
-    <span class="eyebrow">Coaching &amp; counselling</span>
-    <h1>This is for the <mark>weirdos</mark></h1>
-    <p class="lead">Stop living for others and start dealing with the real sh*t</p>
-      </div>
-  <div class="blob"><span class="sticker s1">Berlin +<br>virtual</span><a class="sticker s2" href="{BOOK}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink)">Free<br>consult!</a>{img("ghost-costume.webp", "A person dressed as a ghost with white fabric and glasses, standing outdoors under a blue sky with clouds.", "frame")}</div>
-</div>
-<div class="pill-row"><ul class="pills" aria-label="Who this is for"><li class="pill ghost">Queer</li><li class="pill lime">Neurodivergent</li><li class="pill pink">Non-monogamous</li><li class="pill lilac">Couples &amp; polycules</li><li class="pill teal">No pathologizing</li><li class="pill lime">Real talk</li><li aria-hidden="true" class="pill ghost">Queer</li><li aria-hidden="true" class="pill lime">Neurodivergent</li><li aria-hidden="true" class="pill pink">Non-monogamous</li><li aria-hidden="true" class="pill lilac">Couples &amp; polycules</li><li aria-hidden="true" class="pill teal">No pathologizing</li><li aria-hidden="true" class="pill lime">Real talk</li></ul><ul class="pills" aria-hidden="true"><li class="pill ghost">Queer</li><li class="pill lime">Neurodivergent</li><li class="pill pink">Non-monogamous</li><li class="pill lilac">Couples &amp; polycules</li><li class="pill teal">No pathologizing</li><li class="pill lime">Real talk</li><li class="pill ghost">Queer</li><li class="pill lime">Neurodivergent</li><li class="pill pink">Non-monogamous</li><li class="pill lilac">Couples &amp; polycules</li><li class="pill teal">No pathologizing</li><li class="pill lime">Real talk</li></ul></div>
+<section class="hero hero-photo">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Coaching &amp; counselling</span>
+      <h1>This is for the <mark>weirdos</mark></h1>
+      <p class="lead">Stop living for others and start dealing with the real sh*t</p>
+    </div>
+    <a class="sticker s2" href="{BOOK}" target="_blank" rel="noopener">Free<br>consult!</a>
+  </div>
 </section>
+<section class="who" aria-label="Who this is for"><div class="wrap"><p class="poster"><span class="w w0">Queer</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Neurodivergent</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Non-monogamous</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Couples &amp; polycules</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">No pathologizing</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Real talk</span></p></div></section>
 
 <section class="band"><div class="wrap split">
   <div><span class="eyebrow">About Neurospace</span><h2>Don't worry, we're all weird here.</h2></div>
@@ -273,7 +274,7 @@ page("services.html", "Services | Neurospace Coaching",
 </div></section>
 
 <section><div class="wrap split">
-  {img("services-2.webp", "")}
+  {img("services-2.webp", "A person in a purple sweater and headphones reading a book in a cosy chair", "photo focus-right")}
   <div class="prose">
     <span class="eyebrow">What to expect</span>
     <h2>What to expect</h2>
@@ -309,10 +310,7 @@ page("approach.html", "My Coaching Approach | Neurospace Coaching",
 </div></section>
 
 <section><div class="wrap">
-  <div class="split flip" style="align-items:center">
-    <div><span class="eyebrow">Focus areas</span><h2>What can coaching help with?</h2></div>
-    {img("graffiti.webp", "", "photo wide")}
-  </div>
+  <span class="eyebrow">Focus areas</span><h2>What can coaching help with?</h2>
   <div class="cards">
     {card("Gender identity exploration", "Whether you're just getting curious or deep in transition, I get it from both professional and personal experience.")}
     {card("Neurodivergence", "Especially ADHD and autism. Figuring out your neurotype and what that means for how you move through the world.")}
@@ -356,21 +354,39 @@ page("sliding-scale.html", "Fee Structure & Cost | Neurospace Coaching",
 
 # ---------- CONTACT ----------
 page("contact.html", "Contact | Neurospace Coaching",
-     "Get in touch with Neurospace Coaching or book a free consultation.",
+     "Book a free consultation with Neurospace Coaching or send a message.",
      f"""
-<section class="page-hero"><div class="wrap hero-grid" style="align-items:start">
+<section class="page-hero"><div class="wrap">
+  <span class="eyebrow">Contact</span>
+  <h1>Let’s Get <mark>Started</mark></h1>
+  <p class="lead">If you’re interested in starting coaching with me or have questions, please reach out and I will be excited to connect.</p>
+</div></section>
+
+<section class="band lime" id="book"><div class="wrap book">
   <div>
-    <span class="eyebrow">Contact</span>
-    <h1>Let’s Get <mark>Started</mark></h1>
-    <p class="lead">If you’re interested in starting coaching with me or have questions, please reach out and I will be excited to connect.</p>
-    <div class="card" style="margin-top:28px">
+    <span class="eyebrow">Free consultation</span>
+    <h2>Book a free consultation</h2>
+    <p class="intro">Pick a time that works for you in my calendar. It's free, there's no commitment, and it's a chance to see whether working together feels right.</p>
+    <p class="form-note">Booking opens Calendly in a new tab.</p>
+  </div>
+  <a class="book-card" href="{BOOK}" target="_blank" rel="noopener">
+    <img src="assets/img/ghost-mark.webp" alt="">
+    <span class="book-title">Choose a time</span>
+    <span class="book-meta">{HOURS}</span>
+    <span class="btn">Open my calendar ↗</span>
+  </a>
+</div></section>
+
+<section><div class="wrap hero-grid" style="align-items:start">
+  <div>
+    <span class="eyebrow">Or write to me</span>
+    <h2>Send me a message</h2>
+    <div class="card" style="margin-top:20px">
       <h3>Radical Coaching for Weirdos</h3>
       <p><strong>Email:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a><br><strong>Hours:</strong> {HOURS}</p>
-      <a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consultation ↗</a>
     </div>
   </div>
   <form class="card contact-form" id="form" action="{FORM_ENDPOINT}" method="POST" novalidate>
-    <h3>Send me a message</h3>
     <p class="form-note">A short note about what you're looking for is enough. Please keep sensitive details for our free consultation.</p>
     <label>Name<input name="name" autocomplete="name" required></label>
     <label>Email<input name="email" type="email" autocomplete="email" required></label>
@@ -523,7 +539,7 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 page("404.html", "Page not found | Neurospace Coaching", "Page not found.",
      f"""
 <section class="page-hero"><div class="wrap" style="text-align:center">
-  <div class="float" style="width:110px;margin:0 auto 24px"><img src="assets/img/ghost-mark.webp" alt=""></div>
+  <div style="width:110px;margin:0 auto 24px"><img src="assets/img/ghost-mark.webp" alt=""></div>
   <h1><mark>Boo.</mark> Nothing here.</h1>
   <p class="lead" style="margin:0 auto 28px">This page has vanished. Let's get you somewhere real.</p>
   <a class="btn" href="index.html">Back home</a>
