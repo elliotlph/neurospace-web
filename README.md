@@ -5,7 +5,7 @@ Static site for neurospacecoaching.com. No build step on Cloudflare, no cookies,
 ## Structure
 - `site/` — the published website (the only folder Cloudflare serves, set in `wrangler.toml`)
   - `assets/styles.css` — colours, fonts, layout (palette under `:root`, latest palette block at the bottom)
-  - `assets/fonts/` — Titan One (headings), Atkinson Hyperlegible (body)
+  - `assets/fonts/` — Archivo Black (headings), Archivo Narrow (labels/buttons), Archivo (body)
   - `assets/img/` — photos and ghost logo
 - `tools/build.py` — generates the HTML pages in `site/` from one place (shared header/footer, hours, email, booking link). Edit it, then run `python3 tools/build.py`.
 

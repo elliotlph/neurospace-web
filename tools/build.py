@@ -37,7 +37,7 @@ def page(file, title, desc, body, current=None):
 <meta property="og:image" content="https://neurospacecoaching.com/assets/img/logo-social.png">
 {canon}
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="preload" href="assets/fonts/titan-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -94,7 +94,7 @@ CTA = f"""<div class="wrap cta-wrap"><div class="cta">
     <p>Reach out to schedule a consultation!<br><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a></p>
     <p style="margin-top:22px"><a class="btn ghost-btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consultation ↗</a></p>
   </div>
-  <div class="ghost-art"><img src="assets/img/ghost-mark-light.webp" alt=""></div>
+  <div class="ghost-art"><img src="assets/img/ghost-mark.webp" alt=""></div>
 </div></div>"""
 
 VALUES = """<div class="cards values">
@@ -125,11 +125,11 @@ page("index.html",
       <span class="eyebrow">Coaching &amp; counselling</span>
       <h1>This is for the <mark>weirdos</mark></h1>
       <p class="lead">Stop living for others and start dealing with the real sh*t</p>
+      <div class="hero-actions"><a class="btn orchid" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="services.html">See services</a></div>
     </div>
-    <a class="sticker s2" href="{BOOK}" target="_blank" rel="noopener">Free<br>consult!</a>
   </div>
 </section>
-<section class="who" aria-label="Who this is for"><div class="wrap"><p class="poster"><span class="w w0">LGBTQ+</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Neurodivergence</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Couples</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Non-monogamy</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Life transitions</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Identity</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Immigration</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Burn out</span></p></div></section>
+<section class="who" aria-label="Who I work with"><h2 class="sr">Who I work with: LGBTQ+, Neurodivergence, Couples, Non-monogamy, Life transitions, Identity, Immigration, Burn out</h2><div class="marquee" aria-hidden="true"><div class="track"><div class="seq"><span class="tag-block c1">LGBTQ+</span><span class="tag-block c2">Neurodivergence</span><span class="tag-block c3">Couples</span><span class="tag-block c4">Non-monogamy</span><span class="tag-block c2">Life transitions</span><span class="tag-block c1">Identity</span><span class="tag-block c4">Immigration</span><span class="tag-block c3">Burn out</span></div><div class="seq"><span class="tag-block c1">LGBTQ+</span><span class="tag-block c2">Neurodivergence</span><span class="tag-block c3">Couples</span><span class="tag-block c4">Non-monogamy</span><span class="tag-block c2">Life transitions</span><span class="tag-block c1">Identity</span><span class="tag-block c4">Immigration</span><span class="tag-block c3">Burn out</span></div></div></div></section>
 
 <section class="band"><div class="wrap split">
   <div><span class="eyebrow">About Neurospace</span><h2>Don't worry, we're all weird here.</h2></div>
