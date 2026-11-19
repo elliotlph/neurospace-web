@@ -103,6 +103,12 @@ VALUES = """<div class="cards values">
   <div class="card"><h3>Autonomy</h3><p>Similar but different than agency, it’s imperative in my opinion, that we foster access to our own autonomy. Not in the sense of individualism, but rather the experience of being a differentiated but interdependent self that coexists with others. When we feel autonomous, we actually have more capacity for connection and a felt sense of safety.</p></div>
 </div>"""
 
+VALUES_HOME = """<div class="cards values">
+  <div class="card"><h3>Authenticity</h3><p>Okay, I know this word can sound corny or over-done but I really do believe that when we can access our most genuine self, we are able to experience life in a much richer color. And when I say authentic, I don’t mean not caring about what other people think, I just mean being as true to yourself as possible in any given moment.</p></div>
+  <div class="card"><h3>Agency</h3><p>I use this word a lot because it’s at the core of what I believe causes suffering: a lack or stripping away of agency. When we don’t feel like active and consenting participants in our lives, we experience immense emotional and mental distress. By my logic, reclaiming agency is key to growth.</p></div>
+  <div class="card"><h3>Autonomy</h3><p>Similar but different than agency, it’s imperative in my opinion, that we foster access to our own autonomy. Not in the sense of individualism, but rather the experience of being a differentiated but interdependent self that coexists with others. When we feel autonomous, we actually have more capacity for connection and a felt sense of safety.</p></div>
+</div>"""
+
 
 def card(title, text):
     return f'<div class="card"><h3>{title}</h3><p>{text}</p></div>'
@@ -123,14 +129,14 @@ page("index.html",
     <a class="sticker s2" href="{BOOK}" target="_blank" rel="noopener">Free<br>consult!</a>
   </div>
 </section>
-<section class="who" aria-label="Who this is for"><div class="wrap"><p class="poster"><span class="w w0">Queer</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Neurodivergent</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Non-monogamous</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Couples &amp; polycules</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">No pathologizing</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Real talk</span></p></div></section>
+<section class="who" aria-label="Who this is for"><div class="wrap"><p class="poster"><span class="w w0">LGBTQ+</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Neurodivergence</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Couples</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Non-monogamy</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Life transitions</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w2">Identity</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w0">Immigration</span><img class="sep" src="assets/img/ghost-mark.webp" alt=""><span class="w w1">Burn out</span></p></div></section>
 
 <section class="band"><div class="wrap split">
   <div><span class="eyebrow">About Neurospace</span><h2>Don't worry, we're all weird here.</h2></div>
   <div class="prose">
-    <p>I built Neurospace Coaching because I was done watching people fall through the cracks of a system that wasn't built for them — and honestly, because I needed something different too.</p>
-    <p>My background is clinical. Five years as a therapist, a Master's degree, the whole thing. But what I do now isn't therapy, it's more direct, more collaborative, and a lot less interested in keeping you comfortable with the status quo. If conventional approaches haven't been cutting it, that's not a you problem.</p>
-    <p>What coaching with me actually looks like: someone willing to get in the mess with you and then help you figure out what to do about it. We'll look at what's keeping you stuck, get clear on what you actually want, and build toward that— whether that's who you are, how you're showing up in your relationships, or just how you want to be living your life.</p>
+    <p>I built Neurospace Coaching because I was done watching people fall through the cracks of a system that wasn't built for them, and honestly, because I needed a change too.</p>
+    <p>My background is in clinical mental health. I spent five years as a therapist in the U.S. and opened my practice right after completing my Master’s. But what I do now isn't exactly the same, it's more direct, more collaborative, and a lot less interested in keeping you comfortable with the status quo. If conventional approaches haven't been cutting it, that's not a you problem.</p>
+    <p>The vibe of a session with me? Working with someone willing to get in the mess with you and then help you figure out what to do about it. We'll look at what's keeping you stuck, get clear on what you actually want, and build toward that, whether that's who you are, how you're showing up in your relationships, or just how you want to be living your life.</p>
   </div>
 </div></section>
 
@@ -139,11 +145,10 @@ page("index.html",
   <div class="prose">
     <span class="eyebrow">Meet Elliot</span>
     <h2>Curious, passionate, and <mark>realistic</mark></h2>
-    <p>Curious, passionate, and realistic— that's how I'd describe myself and my approach.</p>
-    <p>Curiosity is non-negotiable. Nothing changes without a willingness to ask hard questions and actually look at the answers. I've seen firsthand what happens when people lead with it: they learn, they shift, they evolve. That's what coaching is for.</p>
+    <p>I’d describe my approach as curious, passionate, and realistic with an edge of optimism.</p>
+    <p>Curiosity is non-negotiable because nothing changes without a willingness to ask hard questions and get to the answers. You learn and evolve when you lead with curiosity, about yourself, your partner, or the world. I’m here to help you help yourself to get there.</p>
     <p>I do this work because I genuinely care about emotional health and human connection. I want you to be the cool ass person you are and live accordingly. If I get to play a role in that, I'm grateful.</p>
-    <p>The realist in me means I'm not just here to talk things through, I'm here to help you turn what you're thinking and hoping into actual movement. I won't pretend this is easy or that the world isn't on fire. But I will challenge you to think and do differently, while being a space where your real feelings can land without judgment.</p>
-    <p>I believe in your right to joy, pleasure, and connection. Let's build more of that.</p>
+    <p>The realist in me means I'm not just here to talk things through, I'm here to help you turn what you're thinking and hoping into actual movement. I won't pretend this is easy or that the world isn't on fire. But I will challenge you to think and do differently, while being a space where your real feelings can land without judgment. On top of that, I do hold onto hope and optimism. I can bring that in the moments you may struggle to see it.</p>
     <p>I'm based in Berlin and work virtually with clients across Europe, North America, and beyond providing English-speaking coaching and counselling, {HOURS}.</p>
     <a class="btn" href="contact.html">Get started</a>
   </div>
@@ -157,7 +162,7 @@ page("index.html",
     {card("Identity and self-exploration", "Who you are, who you want to be, and what's been getting in the way")}
     {card("Relationship coaching and counselling", "Couples, partners, and polycules navigating communication, conflict, and connection")}
     {card("Non-monogamy and ethical non-monogamy (ENM)", "Whether you're new to it or untangling years of patterns")}
-    {card("Neurodivergence", "ADHD, autism, and more. Everything that comes with navigating a world that wasn't designed for your brain")}
+    {card("Neurodivergence", "ADHD, autism, and more. I don’t diagnose but I help you learn more about how you interact with the world")}
     {card("Life transitions and burnout", "Career pivots, relocations, identity shifts, starting over")}
     {card("Immigrant, Expat, and cross-cultural stress", "Whether you’re in a cross-cultural relationship (I am) or navigating life as an immigrant in a new country, I see you")}
   </div>
@@ -167,7 +172,7 @@ page("index.html",
 <section><div class="wrap">
   <span class="eyebrow">My Coaching Values</span>
   <h2>Authenticity, agency, autonomy</h2>
-  {VALUES}
+  {VALUES_HOME}
 </div></section>
 {CTA}
 """)
@@ -189,7 +194,7 @@ page("about.html", "About | Neurospace Coaching",
   <div><span class="eyebrow">Queer &amp; Neurodivergent Centered</span><h2>Here, you get to just be you</h2></div>
   <div class="prose">
     <p>A lot of people are using the word “affirming” and while it’s great to see overall, I think we’re getting lost in the sauce and the term is over-saturated.</p>
-    <p>In my coaching practice I’m all about those of us who are called freaks, weirdos, and outsiders. Although I have come to a place where I can now embrace and celebrate who I am (most days), it doesn’t mean those words don’t still carry weight.</p>
+    <p>In my coaching practice I’m all about those of us who are called freaks, weirdos, and outsiders. Although I have come to a place where I can now embrace and celebrate who I am, it doesn’t mean those words don’t still carry weight.</p>
     <p>But here, you get to release that burden and just be you. And from there, be the version of yourself you have been working towards for years. Things are tough. I am here to make it a bit easier for you so that the good days get longer and the bad days pass easier.</p>
     <a class="btn" href="contact.html">Get started</a>
   </div>
@@ -200,8 +205,8 @@ page("about.html", "About | Neurospace Coaching",
   <div class="prose">
     <span class="eyebrow">Meet Elliot</span>
     <h2>Hi y'all, I'm Elliot (they/she)</h2>
-    <p>I switched to coaching in 2025 after years as a therapist and the short version of why is that I got tired of watching a broken system harm the people it's supposed to help. Licensure requirements don't protect clients from bad therapists, restrictions make it hard to find competent providers, and clinicians are overworked, devalued, and underpaid. I could go on. I won't.</p>
-    <p>What I never got tired of was the actual work— being in the room when something shifts, watching someone's life gain more ease or clarity. That’s why I do this.</p>
+    <p>I switched to coaching in 2025 after years as a therapist and the short version of why is that I got tired of watching a broken system harm the people it's supposed to help. Licensure requirements don't protect clients from bad therapists, restrictions make it hard to find competent providers, and clinicians are overworked, devalued, and underpaid. I could go on but I won't.</p>
+    <p>What I never got tired of was the actual work— being in the room when something changes for the better, watching someone's life gain more ease or clarity. That’s why I do this.</p>
     <p>My clinical background gives me real insight into emotional patterns and human behavior, but coaching lets me work differently. The focus isn't on what's "wrong" with you, it's on who you want to become and what's getting in the way. I'm not here to treat mental health conditions. I'm here to help you figure out your shit and make moves.</p>
     <p>That looks different for everyone:</p>
     <ul class="checks">
@@ -218,10 +223,8 @@ page("about.html", "About | Neurospace Coaching",
 <section class="band lilac"><div class="wrap split">
   <div><span class="eyebrow">Training &amp; Education</span><h2>Where the work comes from</h2></div>
   <div class="timeline prose">
-    <div class="item"><h3>Neurodivergent Somatics</h3><p>A cohort live learning lab provided by Nyck Walsh, MA, LPC completed in March 2024.</p><p>Created to go deeper into how to effectively engage in anti-ableist somatic approaches with Neurodivergent clients (continued focus on Autism and ADH/ADHD). Principles of learning include: Concrete somatic tools and strategies for nervous system regulation; Practices for dismantling internalized ableism/ableism; Boundaries as a much needed form of differentiation in support of empowerment, clarity, and unmasking; Accommodations and executive function supports that are needed for the everyday and to prevent provider burn-out.</p></div>
-    <div class="item"><h3>Somatics with Queer &amp; Trans Clients</h3><p>Provided by Andrea Guitierez-Glik, LMSW. Completed Dec '20. Training in the use of somatic (body-based) modalities attuned specifically to working with queer and trans clients.</p></div>
-    <div class="item"><h3>Integrated Somatic Trauma Certificate</h3><p>Provided through Embody Lab with instruction from leaders in the field of trauma-informed somatic providers including Stacy Haines, Richard Schwartz, Euphrasia "Efu" Nyaki, Peter Levine, Arielle Schwartz, Pat Ogden, Ruby Gibson, and others. Fall 2022.</p></div>
-    <div class="item"><h3>Somatic Parts Work</h3><p>Provided by Fran Booth. Completed Sept ‘22. Integration of somatic work and internal family systems.</p></div>
+    <div class="item"><h3>Life Experience</h3><p>A great coach or therapist is made because they’ve also gone through some sh*t in life (in my strong opinion). My empathy is genuine and my ability to relate, even where we differ, is at least in part, because I have navigated my own struggles. Basically, I get it.</p></div>
+    <div class="item"><h3>Lots of Reading, Listening, and Ongoing Trainings</h3><p>I have read so many books, yes, but I also expose myself to learning from the direct experiences of others. I learn a lot by just listening. To my clients, my friends, and generally the people around me. I also engage with continuing education regularly and have completed trainings in things ranging from EMDR (a therapeutic modality) to Neurodivergent Somatics to Gender Identity exploration and all the in-between related to what I focus on most.</p></div>
     <div class="item"><h3>MA Marriage and Family Therapy</h3><p>I received my Master’s in Marriage and Family Therapy in December 2021.</p></div>
   </div>
 </div></section>
