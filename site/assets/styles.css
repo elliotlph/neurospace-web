@@ -229,3 +229,11 @@ section.hero-photo,section.who{padding:0}
 .site-foot .brand img{filter:none}
 .contact-form>*{padding-left:0!important;padding-right:0!important;margin-bottom:0!important}
 @media (max-width:700px){.hero-photo h1{font-size:2.5rem}.tag-block{font-size:1.25rem}}
+
+/* hero: ghost further right, smaller headline */
+@media (min-width:701px){
+  .hero-photo{background:linear-gradient(90deg,rgba(20,20,20,.66) 0%,rgba(20,20,20,.38) 40%,rgba(20,20,20,0) 62%),url(img/ghost-hero.webp) 0% 38%/max(140%,1600px) auto no-repeat,#3b6fa8}
+}
+.hero-photo h1{font-size:clamp(2.5rem,4.6vw,4.2rem)}
+.hero-photo p.lead{font-size:clamp(1.35rem,2.3vw,2rem);max-width:19ch}
+.hero-copy{max-width:600px}
