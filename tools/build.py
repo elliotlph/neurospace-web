@@ -3,6 +3,7 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "site"
 EMAIL = "elliot@neurospacecoaching.com"
+SITE = "https://neurospacecoaching.com"
 HOURS = "Monday–Thursday, 2pm–9pm CET"
 BOOK = "https://calendly.com/elliot_lphelt/free-consultation"
 FORM_ENDPOINT = "https://formspree.io/f/xdegzbpl"
@@ -20,6 +21,8 @@ def img(name, alt, cls="photo"):
 
 
 def page(file, title, desc, body, current=None):
+    path = "/" if file == "index.html" else "/" + file.removesuffix(".html")
+    canon = "" if file == "404.html" else (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:url" content="{SITE}{path}">')
     links = "".join(
         f'<a href="{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in NAV)
     html = f"""<!DOCTYPE html>
@@ -32,6 +35,7 @@ def page(file, title, desc, body, current=None):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="https://neurospacecoaching.com/assets/img/logo-social.png">
+{canon}
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preload" href="assets/fonts/titan-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
@@ -527,3 +531,18 @@ page("404.html", "Page not found | Neurospace Coaching", "Page not found.",
 """)
 
 print("built", sorted(p.name for p in OUT.glob("*.html")))
+
+
+# ---------- SITEMAP + ROBOTS ----------
+import datetime
+TODAY = datetime.date.today().isoformat()
+pages = ["index.html", "about.html", "services.html", "approach.html", "sliding-scale.html",
+         "contact.html", "privacy-policy.html", "impressum.html"]
+urls = "".join(
+    f"  <url><loc>{SITE}{'/' if f == 'index.html' else '/' + f.removesuffix('.html')}</loc><lastmod>{TODAY}</lastmod></url>\n"
+    for f in pages)
+(OUT / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+print("sitemap + robots written")
