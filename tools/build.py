@@ -309,7 +309,7 @@ page("approach.html", "My Coaching Approach | Neurospace Coaching",
 <section class="band"><div class="wrap">
   <span class="eyebrow">The foundation</span>
   <h2>So what’s this all about?</h2>
-  {VALUES}
+  {VALUES_HOME}
 </div></section>
 
 <section><div class="wrap">
