@@ -1,6 +1,6 @@
 /* Neurospace Coaching — neobrutalist design
    Palette ("One Night in Ibiza"): lime, orchid, periwinkle, peach, cream, black
-   Type: Archivo Black (display), Archivo Narrow (labels/buttons), Archivo (body). All self-hosted. */
+   Type: Fraunces (headlines) + DM Sans (body/labels), see "Direction A" block near the end. Archivo files kept for fallback. All self-hosted. */
 
 @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Archivo Narrow";src:url(fonts/archivo-narrow-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
@@ -267,3 +267,112 @@ section.hero-photo,section.who{padding:0}
 @media (max-width:900px){.checks.big,.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.checks.big,.tiles{grid-template-columns:1fr}.forlist{padding:26px 22px}.tile-btn{min-height:0}}
 @media (prefers-reduced-motion:reduce){.tile,.plus{transition:none}}
+
+/* ======================================================================
+   Direction A, "soft outlines": Fraunces headlines + DM Sans, thinner
+   lines, small shadows, rounded corners, sentence case. Overrides above.
+   ====================================================================== */
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-latin-wght-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(fonts/dm-sans-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --display:"Fraunces",Georgia,serif; --label:"DM Sans",system-ui,sans-serif; --body:"DM Sans",system-ui,sans-serif;
+  --line:2px solid var(--ink); --shadow:4px 4px 0 var(--ink); --r:14px; --r-sm:10px;
+}
+body{font:400 1.1rem/1.65 var(--body)}
+h1,h2,h3{font-weight:600;text-transform:none;letter-spacing:-.015em}
+h1{line-height:1.02} h2{line-height:1.05;font-size:clamp(2rem,3.8vw,3.2rem)} h3{line-height:1.2}
+mark{font-style:italic;font-weight:500;background:var(--orchid);border:0;box-shadow:none;padding:0 .14em;border-radius:8px}
+h1 mark{box-shadow:none;margin:0}
+.eyebrow{font:500 .85rem/1 var(--label);letter-spacing:.02em;text-transform:none;background:transparent;color:var(--ink);border:1.5px solid var(--ink);border-radius:999px;padding:6px 12px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px var(--lime);border-radius:6px}
+/* header */
+.site-head{border-bottom:var(--line)}
+.brand{font:600 1.5rem var(--display);text-transform:none}
+.nav a{font:500 1rem var(--label);text-transform:none;letter-spacing:0;border:2px solid transparent;border-radius:999px}
+.nav a:hover{border-color:var(--ink)}
+.nav a[aria-current=page]{background:transparent;color:var(--ink);border-color:var(--ink)}
+.menu-btn{font:500 1rem var(--label);text-transform:none;letter-spacing:0;border:var(--line);border-radius:var(--r-sm);box-shadow:3px 3px 0 var(--ink)}
+/* buttons */
+.btn{font:500 1.02rem/1 var(--label);text-transform:none;letter-spacing:0;border:var(--line);border-radius:var(--r-sm);padding:14px 22px;box-shadow:3px 3px 0 var(--ink)}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.nav .btn{box-shadow:3px 3px 0 var(--ink);padding:10px 16px}
+.nav a.btn,.nav a.btn:hover,.nav a.btn[aria-current=page]{border:var(--line)}
+/* hero */
+.hero-photo{border-bottom:var(--line)}
+.hero-photo .eyebrow{color:var(--paper);border-color:var(--paper)}
+.hero-photo h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hero-photo h1 mark{color:var(--ink);text-shadow:none}
+.hero-photo p.lead{font:500 clamp(1.2rem,2vw,1.6rem)/1.35 var(--body);text-transform:none;text-shadow:0 1px 12px rgba(0,0,0,.45);max-width:26ch}
+.hero-photo .btn.ghost-btn{background:var(--paper)}
+/* sections */
+section{border-bottom:var(--line)}
+.page-hero p.lead,.intro{font-weight:500}
+.photo,.blob .frame{border:var(--line);border-radius:var(--r);box-shadow:6px 6px 0 var(--ink)}
+/* cards */
+.card{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.card>h3{border-bottom:var(--line);font-size:1.3rem;padding:14px 22px}
+.values{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.values .card{border-radius:0;border-right:var(--line)}
+.values .card>h3{font-size:clamp(1.6rem,2.3vw,2.1rem);border-bottom:var(--line)}
+@media (max-width:900px){.values .card{border-right:0;border-bottom:var(--line)}}
+.checks li::before{border:1.5px solid var(--ink);border-radius:6px;font:700 .75rem/1 var(--label);width:22px;height:22px}
+.timeline .item{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.timeline .item h3{border-bottom:var(--line)}
+/* sliding scale */
+.price{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.price .tag{font:500 .85rem/1 var(--label);text-transform:none;letter-spacing:0;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px}
+.price dl{border-top:var(--line)}
+.price dt{font:700 .95rem var(--label);text-transform:none;letter-spacing:0}
+.price dd{font:600 1.6rem var(--display)}
+/* CTA */
+.cta-wrap{border-bottom:var(--line)}
+.cta h2{font-size:clamp(2.4rem,5vw,4.2rem);line-height:1}
+.cta .ghost-art{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+/* contact */
+.book-card{border:var(--line);border-radius:var(--r);box-shadow:6px 6px 0 var(--ink)}
+.book-title{font:600 1.9rem/1.05 var(--display);text-transform:none}
+.book-meta,.contact-form label{font:500 .98rem var(--label);text-transform:none;letter-spacing:0}
+.contact-form input,.contact-form textarea{border:var(--line);border-radius:var(--r-sm)}
+/* legal */
+.legal table{border:var(--line);border-radius:var(--r-sm);overflow:hidden;border-collapse:separate;border-spacing:0}
+.legal th,.legal td{border:0;border-bottom:1px solid var(--ink)}
+.legal th{font:700 .95rem var(--label);text-transform:none;letter-spacing:0}
+.legal hr{border-top:var(--line)!important}
+/* footer */
+.site-foot h3{font:600 1.1rem var(--display);letter-spacing:0}
+.site-foot ul{font:500 1rem var(--label);text-transform:none;letter-spacing:0}
+.foot-base{border-top:1.5px solid var(--paper);font:400 .9rem var(--label);text-transform:none;letter-spacing:0}
+/* checklist + tiles */
+.forlist{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.checks.big{font:500 1.1rem/1.4 var(--body)}
+.tile{border:var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.tile:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.tile.open{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.tile-btn{border-radius:var(--r)}
+.tile-name{font:600 1.3rem/1.15 var(--display);text-transform:none}
+.plus{border:1.5px solid var(--ink);border-radius:50%;width:32px;height:32px}
+.plus::before,.plus::after{width:13px;height:2px}
+.tile-body{border-top:var(--line)}
+/* highlight = thick colored underline instead of a filled block */
+mark{background:none;color:inherit;padding:0;border-radius:0;text-decoration:underline;text-decoration-color:var(--orchid);text-decoration-thickness:.16em;text-underline-offset:.08em;text-decoration-skip-ink:none}
+.hero-photo h1 mark{color:var(--paper);text-decoration-color:var(--lime);text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.band mark,.band.lilac mark{text-decoration-color:var(--paper)}
+/* dial settings: Fraunces 800, 2.5px outline, 4px shadow, 12px corners */
+:root{--line:2.5px solid var(--ink);--shadow:4px 4px 0 var(--ink);--r:12px;--r-sm:10px}
+h1,h2,h3,.brand,.tile-name,.book-title,.price dd,.site-foot h3{font-weight:800}
+mark{font-weight:700}
+/* heavier outlines on checks, pills and small controls to match cards */
+.checks li::before{border:var(--line)}
+.eyebrow,.price .tag{border:var(--line)}
+.plus{border:var(--line)}
+.nav a:hover,.nav a[aria-current=page]{border-width:2.5px}
+/* all pills, ticks and small icons share one 2px outline */
+:root{--pill-line:2px solid var(--ink)}
+.eyebrow,.price .tag,.checks li::before,.plus{border:var(--pill-line)}
+.hero-photo .eyebrow{border:2px solid var(--paper)}
+.nav a:hover,.nav a[aria-current=page]{border-width:2px}

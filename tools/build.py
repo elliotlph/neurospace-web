@@ -37,7 +37,7 @@ def page(file, title, desc, body, current=None):
 <meta property="og:image" content="https://neurospacecoaching.com/assets/img/logo-social.png">
 {canon}
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="preload" href="assets/fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
