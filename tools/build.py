@@ -37,14 +37,14 @@ def page(file, title, desc, body, current=None):
 <meta property="og:image" content="https://neurospacecoaching.com/assets/img/logo-social.png">
 {canon}
 <link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="preload" href="assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/titan-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head" id="top">
   <div class="wrap head-row">
-    <a class="brand" href="index.html"><img class="ghost-lt" src="assets/img/ghost-mark.webp" alt="" width="210" height="370"><span>Neurospace</span></a>
+    <a class="brand" href="index.html"><img class="ghost-lt" src="assets/img/ghost-mark.webp" alt="" width="210" height="370"><img class="wordmark" src="assets/img/wordmark.png" alt="Neurospace" width="475" height="75"></a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">{links}<a class="btn" href="contact.html"{" aria-current=page" if current == "contact.html" else ""}>Get started</a></nav>
   </div>
@@ -56,7 +56,7 @@ def page(file, title, desc, body, current=None):
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="index.html"><img src="assets/img/ghost-mark-light.webp" alt="" width="210" height="370"><span>Neurospace Coaching</span></a>
+        <a class="brand" href="index.html"><img src="assets/img/ghost-mark-light.webp" alt="" width="210" height="370"><img class="wordmark" src="assets/img/wordmark-light.png" alt="Neurospace Coaching" width="475" height="75"></a>
         <p>Radical coaching for weirdos. Queer and neurodivergent centered, based in Berlin, working virtually in English.</p>
       </div>
       <div>
@@ -89,10 +89,11 @@ const h=document.querySelector('.site-head');addEventListener('scroll',()=>h.cla
 
 CTA = f"""<div class="wrap cta-wrap"><div class="cta">
   <div>
-    <span class="eyebrow">Virtual Coaching Sessions</span>
+    <span class="eyebrow">Virtual coaching sessions</span>
     <h2>Ready to start?</h2>
-    <p>Reach out to schedule a consultation!<br><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a></p>
-    <p style="margin-top:22px"><a class="btn ghost-btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consultation ↗</a></p>
+    <p>A free consult is a great time to ask me questions and feel out the vibe.</p>
+    <p class="cta-mail"><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a></p>
+    <div class="cta-actions"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="mailto:{EMAIL}">Email me</a></div>
   </div>
   <div class="ghost-art"><img src="assets/img/ghost-mark.webp" alt=""></div>
 </div></div>"""
