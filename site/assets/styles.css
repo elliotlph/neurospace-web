@@ -495,3 +495,6 @@ mark,h1 mark{font-style:normal;font-weight:400}
 /* keep vertical breathing room on the CTA band at every width */
 main>.wrap.cta-wrap{padding-top:88px;padding-bottom:88px}
 @media (max-width:900px){main>.wrap.cta-wrap{padding-top:64px;padding-bottom:72px;padding-left:20px;padding-right:20px}.cta .mail{word-break:break-word}}
+
+/* keyword label inside each H1 (SEO): sits on its own line above the headline */
+h1 .h1-kicker{display:table;margin-bottom:18px;font-family:var(--label);font-size:.85rem;line-height:1.2;white-space:normal}

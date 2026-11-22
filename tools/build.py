@@ -1,4 +1,6 @@
 """Generates the static Neurospace site into /home/claude/neurospace-site."""
+import json
+import re
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "site"
@@ -8,6 +10,53 @@ HOURS = "Monday–Thursday, 2pm–9pm CET"
 BOOK = "https://calendly.com/elliot_lphelt/free-consultation"
 FORM_ENDPOINT = "https://formspree.io/f/xdegzbpl"
 ADDRESS = "Mareschstraße 10<br>12055 Berlin<br>Deutschland / Germany"
+
+# ---------- STRUCTURED DATA (JSON-LD, read by Google) ----------
+# Add your Google Business Profile, It's Complicated and other directory profile URLs here
+# once they exist; Google uses these to connect your listings to this website.
+BUSINESS_PROFILES = []
+FOUNDER = {
+    "@type": "Person", "@id": f"{SITE}/#elliot", "name": "Elliot Lima-Pinto Helt",
+    "jobTitle": "Coach", "url": f"{SITE}/about",
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Regis University"},
+    "sameAs": ["https://www.instagram.com/elliot.lph/", "https://elliotlph.substack.com"],
+}
+BUSINESS = {
+    "@context": "https://schema.org", "@type": "ProfessionalService", "@id": f"{SITE}/#business",
+    "name": "Neurospace Coaching", "url": f"{SITE}/",
+    "logo": f"{SITE}/assets/img/logo-social.png", "image": f"{SITE}/assets/img/logo-social.png",
+    "description": ("Online coaching and couples counselling in English for queer, neurodivergent and "
+                    "non-monogamous people, multicultural couples, and immigrants. Based in Berlin."),
+    "email": EMAIL, "priceRange": "€100–€160",
+    "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"},
+    "areaServed": [{"@type": "Country", "name": n} for n in ("Germany", "United Kingdom", "United States")]
+                  + [{"@type": "Place", "name": "European Union"}],
+    "availableLanguage": "English",
+    "openingHoursSpecification": {"@type": "OpeningHoursSpecification",
+                                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+                                  "opens": "14:00", "closes": "21:00"},
+    "founder": FOUNDER,
+    "knowsAbout": ["LGBTQ+ coaching", "neurodivergent coaching", "ADHD coaching", "autism",
+                   "polyamory", "ethical non-monogamy", "couples coaching", "multicultural couples",
+                   "immigration and cultural adjustment", "burnout"],
+}
+if BUSINESS_PROFILES:
+    BUSINESS["sameAs"] = BUSINESS_PROFILES
+WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE}/#website",
+           "name": "Neurospace Coaching", "url": f"{SITE}/", "inLanguage": "en"}
+
+
+def service_schema(file, name, desc, audience):
+    return jsonld({
+        "@context": "https://schema.org", "@type": "Service", "name": name, "description": desc,
+        "url": f"{SITE}/{file.removesuffix('.html')}", "serviceType": "Coaching",
+        "provider": {"@id": f"{SITE}/#business"}, "audience": {"@type": "Audience", "audienceType": audience},
+        "areaServed": BUSINESS["areaServed"], "availableChannel": {"@type": "ServiceChannel", "name": "Online video sessions"},
+    })
+
+# Small label inside an H1, so the headline keeps its voice but also says what the page is about.
+def kicker(text):
+    return f'<span class="eyebrow h1-kicker">{text}</span>'
 
 GHOST = """<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6c-12.2 0-21 9.4-21 21.5V55c0 1.6 1.8 2.5 3.1 1.5l4.4-3.3 4.6 3.6c.8.6 1.9.6 2.6 0L30 53.3l4.3 3.5c.8.6 1.9.6 2.6 0l4.6-3.6 4.4 3.3c1.3 1 3.1.1 3.1-1.5V27.5C53 15.4 44.2 6 32 6z" fill="#fff" stroke="#16171B" stroke-width="3" stroke-linejoin="round"/><circle cx="25" cy="28" r="3.2" fill="#16171B"/><circle cx="39" cy="28" r="3.2" fill="#16171B"/><path d="M27 36c2.8 2.6 7.2 2.6 10 0" fill="none" stroke="#16171B" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="34" r="2.6" fill="#27B6F8" opacity=".55"/><circle cx="44" cy="34" r="2.6" fill="#27B6F8" opacity=".55"/></svg>"""
 
@@ -20,9 +69,24 @@ def img(name, alt, cls="photo"):
             f'onerror="this.style.display=\'none\'"></div>')
 
 
-def page(file, title, desc, body, current=None):
+def clean_links(html):
+    """Point internal links at the clean URLs (/about, not about.html) and make asset
+    paths absolute, so pages never trigger a redirect and the 404 page works at any depth."""
+    html = re.sub(r'href="index\.html(#[^"]*)?"', lambda m: f'href="/{m.group(1) or ""}"', html)
+    html = re.sub(r'href="([a-z0-9-]+)\.html(#[^"]*)?"', lambda m: f'href="/{m.group(1)}{m.group(2) or ""}"', html)
+    return re.sub(r'(src|href)="assets/', r'\1="/assets/', html)
+
+
+def jsonld(*objs):
+    return "".join(f'<script type="application/ld+json">{json.dumps(o, ensure_ascii=False)}</script>\n' for o in objs)
+
+
+def page(file, title, desc, body, current=None, schema=""):
     path = "/" if file == "index.html" else "/" + file.removesuffix(".html")
     canon = "" if file == "404.html" else (f'<link rel="canonical" href="{SITE}{path}">\n<meta property="og:url" content="{SITE}{path}">')
+    canon += '\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Neurospace Coaching">\n<meta name="twitter:card" content="summary_large_image">'
+    if schema:
+        canon += "\n" + schema.strip()
     links = "".join(
         f'<a href="{h}"{" aria-current=page" if h == current else ""}>{t}</a>' for h, t in NAV)
     html = f"""<!DOCTYPE html>
@@ -84,7 +148,7 @@ const h=document.querySelector('.site-head');addEventListener('scroll',()=>h.cla
 </body>
 </html>
 """
-    (OUT / file).write_text(html)
+    (OUT / file).write_text(clean_links(html))
 
 
 CTA = f"""<div class="wrap cta-wrap"><div class="cta">
@@ -123,8 +187,7 @@ page("index.html",
 <section class="hero hero-photo">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Coaching &amp; counselling</span>
-      <h1>This is for the <mark>weirdos</mark></h1>
+      <h1>{kicker("Queer, neurodivergent &amp; non-monogamous coaching · online from Berlin")}This is for the <mark>weirdos</mark></h1>
       <p class="lead">Stop living for others and start dealing with the real sh*t</p>
       <div class="hero-actions"><a class="btn orchid" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="services.html">See services</a></div>
     </div>
@@ -132,7 +195,7 @@ page("index.html",
 </section>
 <section class="for-you"><div class="wrap"><div class="forlist">
   <h2>This is for you if you're…</h2>
-  <ul class="checks big"><li>LGBTQ+</li><li>Neurodivergent</li><li>Non-monogamous or monogamous</li><li>Wanting a stronger relationship</li><li>Burnt out at work or in life</li><li>Navigating a major transition</li><li>A multicultural couple</li><li>Managing immigration and cultural change</li><li>Figuring out who you are</li></ul>
+  <ul class="checks big"><li><a href="queer-couples-coaching.html">LGBTQ+</a></li><li><a href="neurodivergent-coaching.html">Neurodivergent (ADHD, autistic, AuDHD)</a></li><li><a href="polyamory-coaching.html">Polyamorous, ENM or monogamous</a></li><li>Wanting a stronger relationship</li><li>Burnt out at work or in life</li><li>Navigating a major transition</li><li><a href="multicultural-couples-coaching.html">A multicultural couple</a></li><li>An immigrant managing cultural change</li><li>Figuring out who you are</li></ul>
   <a class="btn" href="services.html#who">See how I can help →</a>
 </div></div></section>
 
@@ -154,7 +217,7 @@ page("index.html",
     <p>Curiosity is non-negotiable because nothing changes without a willingness to ask hard questions and get to the answers. You learn and evolve when you lead with curiosity, about yourself, your partner, or the world. I’m here to help you help yourself to get there.</p>
     <p>I do this work because I genuinely care about emotional health and human connection. I want you to be the cool ass person you are and live accordingly. If I get to play a role in that, I'm grateful.</p>
     <p>The realist in me means I'm not just here to talk things through, I'm here to help you turn what you're thinking and hoping into actual movement. I won't pretend this is easy or that the world isn't on fire. But I will challenge you to think and do differently, while being a space where your real feelings can land without judgment. On top of that, I do hold onto hope and optimism. I can bring that in the moments you may struggle to see it.</p>
-    <p>I'm based in Berlin and work virtually with clients across Europe, North America, and beyond providing English-speaking coaching and counselling, {HOURS}.</p>
+    <p>I'm based in Berlin and work online with clients across Germany, Europe, the UK, North America, and beyond, providing English-speaking coaching and counselling for individuals, couples and polycules, {HOURS}.</p>
     <a class="btn" href="contact.html">Get started</a>
   </div>
 </div></section>
@@ -165,7 +228,7 @@ page("index.html",
   {VALUES_HOME}
 </div></section>
 {CTA}
-""")
+""", schema=jsonld(BUSINESS, WEBSITE))
 
 # ---------- ABOUT ----------
 page("about.html", "About | Neurospace Coaching",
@@ -173,8 +236,7 @@ page("about.html", "About | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap hero-grid">
   <div>
-    <span class="eyebrow">About</span>
-    <h1>It’s 2026, we’re dropping the <mark>mask</mark></h1>
+    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered coach in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
     <p class="lead">The world is objectively exhausting and terrifying right now and you deserve a space for yourself to decompress and be real.</p>
   </div>
   <div class="blob">{img("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other.", "frame")}</div>
@@ -226,8 +288,7 @@ page("services.html", "Services | Neurospace Coaching",
      "Individual, relationship and polycule coaching for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats navigating cultural change.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <span class="eyebrow">Services</span>
-  <h1>Ways we can <mark>work</mark> together</h1>
+  <h1>{kicker("Online coaching for individuals, couples &amp; polycules")}Ways we can <mark>work</mark> together</h1>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
@@ -255,6 +316,13 @@ page("services.html", "Services | Neurospace Coaching",
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-9"><span class="tile-name">Immigration and cultural change</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-9">Building a life in a new country: the bureaucracy, the loneliness, the in-between identity. Whether you moved last month or years ago, I've been through it, I get it.</p></div>
   </div>
   <p style="margin-top:32px">If you're not sure whether what I do is a fit for what you need, that's exactly what a <a href="{BOOK}" target="_blank" rel="noopener">free consultation</a> is for.</p>
+  <h3 style="margin-top:40px">Read more about my specialties</h3>
+  <ul class="checks">
+    <li><a href="polyamory-coaching.html">Polyamory &amp; ENM relationship coaching</a></li>
+    <li><a href="neurodivergent-coaching.html">Coaching for ADHD &amp; autistic adults and couples</a></li>
+    <li><a href="queer-couples-coaching.html">LGBTQ+ &amp; queer couples coaching</a></li>
+    <li><a href="multicultural-couples-coaching.html">Multicultural couples &amp; immigrant coaching</a></li>
+  </ul>
 </div></section>
 <script>
 document.querySelectorAll('.tile-btn').forEach(b=>{{const p=document.getElementById(b.getAttribute('aria-controls'));p.hidden=true;
@@ -309,8 +377,7 @@ page("approach.html", "My Coaching Approach | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap">
   <div class="prose">
-    <span class="eyebrow">Approach</span>
-    <h1>My Coaching <mark>Approach</mark></h1>
+    <h1>{kicker("Evidence-based, queer &amp; neurodivergent-centered coaching")}My Coaching <mark>Approach</mark></h1>
     <p class="lead">I see myself as someone who stands alongside people through the real complexity of life— not above it, not outside it.</p>
     <p>My approach is evidence-based, intuitive, and creative. I think of coaching as a kind of alchemy: multiple things have to come together to create genuine change. For me, those are authenticity, agency, and autonomy. Whatever you're bringing to this work, those three things are the foundation.</p>
     <p>Let's talk and see where it goes.</p>
@@ -345,8 +412,7 @@ page("sliding-scale.html", "Fee Structure & Cost | Neurospace Coaching",
      "Sliding-scale session fees based on client-reported income, for clients in the US, UK and EU.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <span class="eyebrow">Sliding Scale</span>
-  <h1>Fee Structure &amp; <mark>Cost</mark></h1>
+  <h1>{kicker("Coaching session fees · sliding scale")}Fee Structure &amp; <mark>Cost</mark></h1>
   <p class="lead">Session cost operates based on a sliding scale structure determined by client-reported income.</p>
   <div class="price-grid">
     <div class="price"><span class="tag">Bracket A</span><h3>Constrained</h3><p>Enough to cover essentials, utilities, and basic bills. Savings are minimal or non-existent. Prioritizing needs over wants.</p>
@@ -374,8 +440,7 @@ page("contact.html", "Contact | Neurospace Coaching",
      "Book a free consultation with Neurospace Coaching or send a message.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <span class="eyebrow">Contact</span>
-  <h1>Let’s Get <mark>Started</mark></h1>
+  <h1>{kicker("Book a free online coaching consultation")}Let’s Get <mark>Started</mark></h1>
   <p class="lead">If you’re interested in starting coaching with me or have questions, please reach out and I will be excited to connect.</p>
 </div></section>
 
@@ -552,6 +617,162 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 </div></section>
 """)
 
+# ---------- SPECIALTY PAGES ----------
+# One page per specialty, so each can rank for what people actually search for.
+HOW_IT_WORKS = f"""<section class="band lilac"><div class="wrap split">
+  <div><span class="eyebrow">How it works</span><h2>Online, in English, at your pace</h2></div>
+  <div class="prose">
+    <ul class="checks">
+      <li>Sessions are online by video, so you can join from Berlin, anywhere in Germany or Europe, the UK, or North America.</li>
+      <li>Sessions are in English, {HOURS}.</li>
+      <li>Fees follow a <a href="sliding-scale.html">sliding scale</a> (€100–€160 per session, adjusted to your local currency).</li>
+      <li>We start with a free consultation to see whether working together feels right.</li>
+    </ul>
+    <p>Coaching isn't psychotherapy and I don't diagnose or treat mental health conditions. If you need clinical care, I'll tell you directly and help you think about where to find it.</p>
+    <a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a>
+  </div>
+</div></section>"""
+
+
+def specialty(file, title, desc, kick, h1, lead, image, intro_h2, intro, familiar, work_cards, faqs, audience, service_name):
+    faq_html = "".join(f'<div class="item"><h3>{q}</h3><p>{a}</p></div>' for q, a in faqs)
+    page(file, title, desc, f"""
+<section class="page-hero"><div class="wrap hero-grid">
+  <div>
+    <h1>{kicker(kick)}{h1}</h1>
+    <p class="lead">{lead}</p>
+    <div class="hero-actions"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="services.html">All services</a></div>
+  </div>
+  <div class="blob">{img(image[0], image[1], "frame")}</div>
+</div></section>
+
+<section class="band pink"><div class="wrap split">
+  <div><span class="eyebrow">Sound familiar?</span><h2>{intro_h2}</h2></div>
+  <div class="prose">
+    {intro}
+    <ul class="checks">{"".join(f"<li>{x}</li>" for x in familiar)}</ul>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">What we'd work on</span><h2>What coaching with me looks like</h2>
+  <div class="cards">{"".join(card(t, x) for t, x in work_cards)}</div>
+</div></section>
+
+{HOW_IT_WORKS}
+
+<section><div class="wrap split">
+  <div><span class="eyebrow">Questions</span><h2>Common questions</h2></div>
+  <div class="timeline prose">{faq_html}</div>
+</div></section>
+{CTA}
+""", "services.html", schema=service_schema(file, service_name, desc, audience))
+
+
+specialty(
+    "polyamory-coaching.html",
+    "Polyamory & ENM Relationship Coaching, Online | Neurospace Coaching",
+    "Online polyamory and ethical non-monogamy (ENM) coaching for individuals, couples and polycules. Opening up, mono-poly relationships, jealousy, agreements. In English, based in Berlin.",
+    "Polyamory &amp; ENM relationship coaching", "Non-monogamy, <mark>minus</mark> the chaos",
+    "Coaching for people opening up, already non-monogamous, or somewhere in between, solo, as a couple, or as a whole polycule.",
+    ("laughing.webp", "Two men laughing and hugging each other"),
+    "Non-monogamy is a skill set, not a personality test",
+    "<p>Polyamory and ethical non-monogamy can be deeply good for people. They can also surface every insecurity, communication gap and unspoken expectation at once. None of that means you're doing it wrong. It means you're doing something most of us never had a model for.</p>",
+    ["You're thinking about opening your relationship and don't know where to start",
+     "One of you is poly and one is monogamous, and you're trying to make it work",
+     "Jealousy, comparison or insecurity keeps hijacking the good stuff",
+     "Your agreements were made in a hurry and don't fit anymore",
+     "Your polycule needs a neutral space to sort out conflict, time and boundaries"],
+    [("Opening up", "Getting clear on why you want this, what each of you actually needs, and how to start without blowing up what you already have."),
+     ("Agreements and boundaries", "Building agreements that are honest, flexible and revisitable, and figuring out the difference between a boundary and a rule."),
+     ("Jealousy and insecurity", "Looking at what jealousy is pointing to instead of treating it as a stop sign or a personal failure."),
+     ("Mono-poly relationships", "Respecting both relationship orientations without one person quietly carrying all the compromise."),
+     ("Polycule coaching", "Group sessions for multi-partner relationships working through communication breakdowns, conflicting needs and logistics."),
+     ("Neurodivergence and ENM", "Calendars, capacity, rejection sensitivity and how your brain shapes the way you love, without shame.")],
+    [("Do I have to already be polyamorous to work with you?", "No. Plenty of people come to me while they're still curious, and some decide non-monogamy isn't for them. Every relationship style gets the same respect here."),
+     ("Can my partners join sessions?", "Yes. I work with individuals, couples and polycules, so sessions can be solo, with one partner, or with several people at once."),
+     ("Will you try to talk us into or out of non-monogamy?", "No. My job is to help you get clear on what you want and build the skills to do it well, whatever structure that ends up being.")],
+    "Polyamorous, ethically non-monogamous and mono-poly individuals, couples and polycules",
+    "Polyamory and ethical non-monogamy relationship coaching")
+
+specialty(
+    "neurodivergent-coaching.html",
+    "ADHD & Autistic Coaching for Adults and Couples, Online | Neurospace Coaching",
+    "Neurodivergent-centered online coaching for ADHD, autistic and AuDHD adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
+    "Coaching for ADHD, autistic &amp; AuDHD adults and couples", "Built around how your <mark>brain</mark> works",
+    "Neurodivergent-centered coaching for adults and couples who are tired of strategies built for someone else's brain.",
+    ("services-2.webp", "A person in a purple sweater and headphones reading a book in a cosy chair"),
+    "You're not lazy, broken or too much",
+    "<p>Whether you've known you're ADHD or autistic for years, were recently identified, or are still exploring the question, coaching here starts from how you actually function, not how you've been told you should. I don't diagnose, but I can help you understand your patterns and build a life that fits them.</p>",
+    ["Executive functioning keeps getting in the way of things you genuinely want to do",
+     "You're burnt out from masking at work, with family, or in your relationship",
+     "You were identified as an adult and are rethinking a lot of your story",
+     "Your relationship keeps snagging on communication, chores, sensory needs or time",
+     "Productivity advice makes you feel worse, not better"],
+    [("Executive functioning", "Practical, brain-friendly systems for the dishes, the inbox, the appointments and the projects you keep meaning to start."),
+     ("Burnout and recovery", "Figuring out what's draining you, what you can stop carrying, and how to protect your energy going forward."),
+     ("Masking and unmasking", "Exploring who you are under the masking and deciding, on your terms, how you want to show up."),
+     ("Neurodivergent relationships", "Coaching for couples where one or both partners are neurodivergent: communication styles, sensory needs, emotional load and conflict."),
+     ("Work and self-advocacy", "Navigating being neurodivergent at work, asking for what you need, or finding work that doesn't flatten you."),
+     ("Identity", "Making sense of a late identification and how it intersects with being queer, trans, an immigrant, or all of the above.")],
+    [("Do I need a diagnosis to work with you?", "No. Self-identified, formally diagnosed, or just wondering, you're welcome here. Coaching doesn't require or provide a diagnosis."),
+     ("Is this ADHD coaching or autism coaching?", "Both, and everything in between. A lot of my clients are AuDHD or don't fit neatly into one box, and that's fine."),
+     ("Can we work on this as a couple?", "Yes. I work with couples where one or both partners are neurodivergent, and with polycules too.")],
+    "ADHD, autistic and AuDHD adults and couples",
+    "Neurodivergent coaching for ADHD and autistic adults and couples")
+
+specialty(
+    "queer-couples-coaching.html",
+    "LGBTQ+ & Queer Couples Coaching, Online | Neurospace Coaching",
+    "Online coaching for LGBTQ+ individuals and queer couples: communication, conflict, gender identity, coming out, and relationships outside the standard script. In English, based in Berlin.",
+    "LGBTQ+ &amp; queer couples coaching", "Queer love, <mark>no translation</mark> needed",
+    "Coaching for queer and trans people and their relationships, with a coach who doesn't need the basics explained.",
+    ("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other."),
+    "Your relationship doesn't have to fit anyone else's script",
+    "<p>Queer relationships come with their own strengths and their own pressures: family who don't get it, gender and identity shifting over time, chosen family, and few models for what a good relationship can look like. I bring both professional and personal experience to this work, so you can spend sessions on your life, not educating your coach.</p>",
+    ["You keep having the same fight and can't find what's underneath it",
+     "One of you is exploring gender or transitioning, and you're figuring out what it means for you both",
+     "Coming out, family tension or homophobia and transphobia are spilling into your relationship",
+     "You want to strengthen your relationship before it's in crisis",
+     "You're questioning your identity and want space to explore it"],
+    [("Communication and conflict", "Mapping the conflict cycle you're stuck in and building practical ways to hear each other."),
+     ("Gender and transition in relationships", "Support for couples navigating a partner's gender exploration or transition, with room for both of your experiences."),
+     ("Identity and coming out", "Exploring who you are, coming out (or not) on your own timeline, and handling the reactions."),
+     ("Family and chosen family", "Setting boundaries with family of origin and building the community you actually want."),
+     ("Intimacy and connection", "Reconnecting when life, stress or old stuff has created distance between you."),
+     ("Relationship structure", "Monogamous, open, polyamorous or something else: <a href='polyamory-coaching.html'>non-monogamy coaching</a> is part of what I do too.")],
+    [("Do you only work with queer couples?", "My practice centers LGBTQ+ people, and I also work with individuals and with straight couples where one partner is queer, trans or questioning."),
+     ("Is this couples therapy?", "It's coaching, which means we focus on where you want to go and how to get there rather than diagnosing or treating anything. If you need couples therapy, I'll say so."),
+     ("Can we do sessions from different locations?", "Yes. Sessions are online, so you can join together or from separate places.")],
+    "LGBTQ+ individuals and queer couples",
+    "LGBTQ+ and queer couples coaching")
+
+specialty(
+    "multicultural-couples-coaching.html",
+    "Multicultural Couples & Immigrant Coaching, Online from Berlin | Neurospace Coaching",
+    "Online coaching in English for multicultural and cross-cultural couples, immigrants and expats in Berlin, Germany and across Europe: culture, family, language, belonging.",
+    "Multicultural couples &amp; immigrant coaching", "Two cultures, one <mark>relationship</mark>",
+    "Coaching for cross-cultural couples and for immigrants building a life in a new country, from someone who's living it too.",
+    ("graffiti.webp", "Blue and yellow graffiti painted on a wooden wall"),
+    "Love across languages, families and ideas of home",
+    "<p>Multicultural relationships bring a lot of richness, and a lot to negotiate: different expectations about family, money, roles and conflict, often in a language that isn't one partner's first. Add a move to a new country and things get heavier. I'm in a cross-cultural relationship and relocated to Berlin myself, so I know this from the inside.</p>",
+    ["You keep clashing over family, holidays, money or roles and can't tell what's cultural and what's personal",
+     "One of you moved for the other, and the balance of the relationship has shifted",
+     "Something important keeps getting lost in translation",
+     "You moved to Germany and the bureaucracy, loneliness and in-between identity are wearing you down",
+     "You're deciding where to build your life long-term"],
+    [("Cultural expectations", "Naming the assumptions each of you grew up with so you can decide together what you want to keep."),
+     ("Family and in-laws", "Navigating family across borders, time zones and very different ideas of closeness and obligation."),
+     ("Communication across languages", "Building ways to talk about hard things when you don't share a first language."),
+     ("Relocation and imbalance", "Working through what changes when one partner leaves their country, career or community for the relationship."),
+     ("Belonging as an immigrant", "Finding your footing, your people and your identity in a new place, whether you moved last month or years ago."),
+     ("Big decisions", "Where to live, whether to stay, and how to plan a future that works for both of you.")],
+    [("Do you work only with couples living in Berlin?", "No. Sessions are online, so I work with couples and individuals across Germany, Europe, the UK and North America."),
+     ("We speak different first languages. Is English OK?", "Sessions are in English. Many of my clients speak English as a second or third language, and we'll go at whatever pace works."),
+     ("Can I come on my own?", "Yes. Individual coaching for immigrants and people adjusting to a new country is a big part of what I do.")],
+    "Multicultural and cross-cultural couples, immigrants and expats",
+    "Multicultural couples and immigrant coaching")
+
 # ---------- 404 ----------
 page("404.html", "Page not found | Neurospace Coaching", "Page not found.",
      f"""
@@ -569,7 +790,9 @@ print("built", sorted(p.name for p in OUT.glob("*.html")))
 # ---------- SITEMAP + ROBOTS ----------
 import datetime
 TODAY = datetime.date.today().isoformat()
-pages = ["index.html", "about.html", "services.html", "approach.html", "sliding-scale.html",
+pages = ["index.html", "about.html", "services.html", "polyamory-coaching.html",
+         "neurodivergent-coaching.html", "queer-couples-coaching.html",
+         "multicultural-couples-coaching.html", "approach.html", "sliding-scale.html",
          "contact.html", "privacy-policy.html", "impressum.html"]
 urls = "".join(
     f"  <url><loc>{SITE}{'/' if f == 'index.html' else '/' + f.removesuffix('.html')}</loc><lastmod>{TODAY}</lastmod></url>\n"
