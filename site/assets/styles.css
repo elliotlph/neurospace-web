@@ -376,3 +376,4 @@ mark{font-weight:700}
 .eyebrow,.price .tag,.checks li::before,.plus{border:var(--pill-line)}
 .hero-photo .eyebrow{border:2px solid var(--paper)}
 .nav a:hover,.nav a[aria-current=page]{border-width:2px}
+@media (min-width:1000px){.cards.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
