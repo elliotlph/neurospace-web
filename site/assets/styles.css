@@ -237,3 +237,33 @@ section.hero-photo,section.who{padding:0}
 .hero-photo h1{font-size:clamp(2.5rem,4.6vw,4.2rem)}
 .hero-photo p.lead{font-size:clamp(1.35rem,2.3vw,2rem);max-width:19ch}
 .hero-copy{max-width:600px}
+
+/* ---------- "This is for you if" checklist (home) ---------- */
+.for-you{padding-top:72px}
+.forlist{background:var(--white);border:var(--line);box-shadow:var(--shadow);padding:36px 40px}
+.forlist h2{font-size:clamp(1.8rem,3.4vw,2.8rem)}
+.checks.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 28px;margin:24px 0 32px;font:600 1.12rem/1.35 var(--body,inherit)}
+.checks.big li{margin:0}
+.checks.big li:nth-child(4n+1)::before{background:var(--peri)}
+.checks.big li:nth-child(4n+2)::before{background:var(--lime)}
+.checks.big li:nth-child(4n+3)::before{background:var(--peach)}
+.checks.big li:nth-child(4n+4)::before{background:var(--orchid)}
+
+/* ---------- who-I-work-with tiles (services) ---------- */
+#who{scroll-margin-top:96px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:36px;align-items:start}
+.tile{background:var(--white);border:var(--line);box-shadow:var(--shadow);transition:transform .1s,box-shadow .1s}
+.tile:nth-child(5n+2){background:var(--lime)}.tile:nth-child(5n+3){background:var(--orchid)}.tile:nth-child(5n+4){background:var(--peri)}.tile:nth-child(5n+5){background:var(--peach)}
+.tile:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--ink)}
+.tile.open{transform:translate(3px,3px);box-shadow:4px 4px 0 var(--ink)}
+.tile-btn{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:22px;min-height:112px;color:var(--ink)}
+.tile-btn:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+.tile-name{font:400 1.35rem/1.05 var(--display);text-transform:uppercase}
+.plus{flex:none;position:relative;width:36px;height:36px;border:3px solid var(--ink);background:var(--paper);transition:transform .2s}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:3px;background:var(--ink);transform:translate(-50%,-50%)}
+.plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.tile.open .plus{transform:rotate(45deg)}
+.tile-body{margin:0;padding:18px 22px 22px;border-top:var(--line);font-size:1.05rem}
+@media (max-width:900px){.checks.big,.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.checks.big,.tiles{grid-template-columns:1fr}.forlist{padding:26px 22px}.tile-btn{min-height:0}}
+@media (prefers-reduced-motion:reduce){.tile,.plus{transition:none}}

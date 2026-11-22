@@ -117,7 +117,7 @@ def card(title, text):
 # ---------- HOME ----------
 page("index.html",
      "Neurospace Coaching | Queer & Neurodivergent Coach and Couples Counsellor — Berlin, Germany",
-     "Virtual life coaching and couples counselling for queer, neurodivergent and non-monogamous people. Based in Berlin, working in English across Europe, North America and beyond.",
+     "Virtual coaching and couples counselling for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats. Based in Berlin, working in English across Europe, North America and beyond.",
      f"""
 <section class="hero hero-photo">
   <div class="wrap">
@@ -129,7 +129,11 @@ page("index.html",
     </div>
   </div>
 </section>
-<section class="who" aria-label="Who I work with"><h2 class="sr">Who I work with: LGBTQ+, Neurodivergence, Couples, Non-monogamy, Life transitions, Identity, Immigration, Burn out</h2><div class="marquee" aria-hidden="true"><div class="track"><div class="seq"><span class="tag-block c1">LGBTQ+</span><span class="tag-block c2">Neurodivergence</span><span class="tag-block c3">Couples</span><span class="tag-block c4">Non-monogamy</span><span class="tag-block c2">Life transitions</span><span class="tag-block c1">Identity</span><span class="tag-block c4">Immigration</span><span class="tag-block c3">Burn out</span></div><div class="seq"><span class="tag-block c1">LGBTQ+</span><span class="tag-block c2">Neurodivergence</span><span class="tag-block c3">Couples</span><span class="tag-block c4">Non-monogamy</span><span class="tag-block c2">Life transitions</span><span class="tag-block c1">Identity</span><span class="tag-block c4">Immigration</span><span class="tag-block c3">Burn out</span></div></div></div></section>
+<section class="for-you"><div class="wrap"><div class="forlist">
+  <h2>This is for you if you're…</h2>
+  <ul class="checks big"><li>LGBTQ+</li><li>Neurodivergent</li><li>Non-monogamous or monogamous</li><li>Wanting a stronger relationship</li><li>Burnt out at work or in life</li><li>Navigating a major transition</li><li>A multicultural couple</li><li>Managing immigration and cultural change</li><li>Figuring out who you are</li></ul>
+  <a class="btn" href="services.html#who">See how I can help →</a>
+</div></div></section>
 
 <section class="band"><div class="wrap split">
   <div><span class="eyebrow">About Neurospace</span><h2>Don't worry, we're all weird here.</h2></div>
@@ -152,21 +156,6 @@ page("index.html",
     <p>I'm based in Berlin and work virtually with clients across Europe, North America, and beyond providing English-speaking coaching and counselling, {HOURS}.</p>
     <a class="btn" href="contact.html">Get started</a>
   </div>
-</div></section>
-
-<section class="band lime"><div class="wrap">
-  <span class="eyebrow">What I work with</span>
-  <h2>Figuring out what's not working, and building something better</h2>
-  <p class="intro">Whether you'd call it coaching or counselling, what we're doing together is figuring out what's not working and building something better. I work with:</p>
-  <div class="cards">
-    {card("Identity and self-exploration", "Who you are, who you want to be, and what's been getting in the way")}
-    {card("Relationship coaching and counselling", "Couples, partners, and polycules navigating communication, conflict, and connection")}
-    {card("Non-monogamy and ethical non-monogamy (ENM)", "Whether you're new to it or untangling years of patterns")}
-    {card("Neurodivergence", "ADHD, autism, and more. I don’t diagnose but I help you learn more about how you interact with the world")}
-    {card("Life transitions and burnout", "Career pivots, relocations, identity shifts, starting over")}
-    {card("Immigrant, Expat, and cross-cultural stress", "Whether you’re in a cross-cultural relationship (I am) or navigating life as an immigrant in a new country, I see you")}
-  </div>
-  <p style="margin-top:32px">If you're not sure whether what I do is a fit for what you need, that's exactly what a free consultation is for.</p>
 </div></section>
 
 <section><div class="wrap">
@@ -233,7 +222,7 @@ page("about.html", "About | Neurospace Coaching",
 
 # ---------- SERVICES ----------
 page("services.html", "Services | Neurospace Coaching",
-     "Individual, relationship and polycule coaching for queer, neurodivergent and non-monogamous people.",
+     "Individual, relationship and polycule coaching for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats navigating cultural change.",
      f"""
 <section class="page-hero"><div class="wrap">
   <span class="eyebrow">Services</span>
@@ -248,6 +237,28 @@ page("services.html", "Services | Neurospace Coaching",
   </div>
   <p style="margin-top:32px"><a class="btn" href="contact.html">Get started</a></p>
 </div></section>
+
+<section id="who"><div class="wrap">
+  <span class="eyebrow">Who I work with</span>
+  <h2>Figuring out what's not working, and building something better</h2>
+  <p class="intro">Whether you'd call it coaching or counselling, what we're doing together is figuring out what's not working and building something better. Tap any of these to see what we'd work on.</p>
+  <div class="tiles">
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-1"><span class="tile-name">Identity and self-exploration</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-1">Who you are, who you want to be, and what's been getting in the way. We'll get clear on your values and start living like they matter.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-2"><span class="tile-name">LGBTQ+</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-2">Coming out, coming into yourself, or living fully as who you are in a world that keeps asking you to explain it. No educating your coach required.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-3"><span class="tile-name">Neurodivergent</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-3">ADHD, autism, and more. I don't diagnose, but I help you learn more about how you interact with the world, and we build around how your brain actually works, not how you've been told it should.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-4"><span class="tile-name">Non-monogamous or monogamous</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-4">All relationships can be ethical and have their tension points. Whether you're new to non-monogamy or untangling years of patterns, every relationship style gets the same respect here.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-5"><span class="tile-name">A stronger relationship</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-5">Couples, partners, and polycules navigating communication, conflict, and connection. Less going in circles, more actually hearing each other. You don't have to be in crisis to want support. Let's strengthen what's already there.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-6"><span class="tile-name">Burnout</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-6">Running on empty at work or in life. We'll look at what's draining you, what you want to stop carrying, and what a pace you can actually sustain looks like.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-7"><span class="tile-name">Major transitions</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-7">Career pivots, relocations, identity shifts, starting over. Change is messy, and you don't have to figure it out alone.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-8"><span class="tile-name">Multicultural couples</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-8">Different languages, families, expectations, and ideas of home. I'm in a cross-cultural relationship too, so I get it from the inside.</p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-9"><span class="tile-name">Immigration and cultural change</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-9">Building a life in a new country: the bureaucracy, the loneliness, the in-between identity. Whether you moved last month or years ago, I've been through it, I get it.</p></div>
+  </div>
+  <p style="margin-top:32px">If you're not sure whether what I do is a fit for what you need, that's exactly what a <a href="{BOOK}" target="_blank" rel="noopener">free consultation</a> is for.</p>
+</div></section>
+<script>
+document.querySelectorAll('.tile-btn').forEach(b=>{{const p=document.getElementById(b.getAttribute('aria-controls'));p.hidden=true;
+b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);p.hidden=!o;b.parentElement.classList.toggle('open',o)}})}});
+</script>
 
 <section class="band lilac"><div class="wrap split flip">
   <div class="prose">
