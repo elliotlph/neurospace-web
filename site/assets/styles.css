@@ -532,3 +532,7 @@ h1 .h1-kicker{display:table;margin-bottom:18px;font-family:var(--label);font-siz
 .hero-photo p.lead{margin-top:2px;line-height:1.45}
 .hero-actions{margin-top:14px}
 @media (max-width:700px){.hero-photo h1 .h1-kicker{margin-bottom:22px}.hero-copy{gap:20px}}
+
+/* hero: taller so more of the ghost photo shows */
+@media (min-width:701px){.hero-photo{min-height:clamp(680px,56vw,920px);background-position:0 0,50% 35%,0 0}}
+@media (max-width:700px){.hero-photo{min-height:640px;display:flex;align-items:center}.hero-photo>.wrap{width:100%}}
