@@ -498,3 +498,17 @@ main>.wrap.cta-wrap{padding-top:88px;padding-bottom:88px}
 
 /* keyword label inside each H1 (SEO): sits on its own line above the headline */
 h1 .h1-kicker{display:table;margin-bottom:18px;font-family:var(--label);font-size:.85rem;line-height:1.2;white-space:normal}
+
+/* Services: specialty link cards + tile read-more links */
+.spec-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:32px}
+.spec-card{display:flex;flex-direction:column;gap:12px;padding:26px 24px;background:var(--white);border:var(--glass-edge);border-radius:var(--r);box-shadow:var(--soft);color:var(--ink);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.spec-card:nth-child(4n+1){background:var(--lime)}.spec-card:nth-child(4n+2){background:var(--orchid)}.spec-card:nth-child(4n+3){background:var(--peri)}.spec-card:nth-child(4n+4){background:var(--peach)}
+.spec-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(20,20,20,.18)}
+.spec-card:focus-visible{outline:4px solid var(--ink);outline-offset:4px}
+.spec-name{font:400 1.45rem/1.15 var(--display)}
+.spec-desc{font-size:1.02rem;line-height:1.45;flex:1}
+.spec-go{font:700 1rem/1 var(--label,inherit);text-decoration:underline;text-underline-offset:3px}
+.tile-body .more{display:inline-block;margin-top:8px;font-weight:700}
+@media (max-width:1000px){.spec-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.spec-cards{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.spec-card{transition:none}}
