@@ -524,3 +524,11 @@ h1 .h1-kicker{display:table;margin-bottom:18px;font-family:var(--label);font-siz
   .hero-photo{background:linear-gradient(90deg,rgba(20,20,20,.66) 0%,rgba(20,20,20,.38) 40%,rgba(20,20,20,0) 62%),url(img/ghost-hero.webp) 50% 30%/cover no-repeat,#3b6fa8;min-height:clamp(560px,40vw,720px);display:flex;align-items:center}
   .hero-photo>.wrap{width:100%}
 }
+
+/* hero: more breathing room between pill, headline, lead and buttons */
+.hero-photo h1 .h1-kicker{margin:0 0 30px;padding:8px 16px;font-size:.9rem}
+.hero-photo h1{line-height:1.05}
+.hero-copy{gap:26px}
+.hero-photo p.lead{margin-top:2px;line-height:1.45}
+.hero-actions{margin-top:14px}
+@media (max-width:700px){.hero-photo h1 .h1-kicker{margin-bottom:22px}.hero-copy{gap:20px}}
