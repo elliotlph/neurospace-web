@@ -187,7 +187,7 @@ page("index.html",
 <section class="hero hero-photo">
   <div class="wrap">
     <div class="hero-copy">
-      <h1>{kicker("Queer, neurodivergent &amp; non-monogamous coaching and counselling · online from Berlin")}This is for the <mark>weirdos</mark></h1>
+      <h1>{kicker("Coaching and counselling in Berlin")}This is for the <mark>weirdos</mark></h1>
       <p class="lead">Stop living for others and start dealing with the real sh*t</p>
       <div class="hero-actions"><a class="btn orchid" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="services.html">See services</a></div>
     </div>
