@@ -17,7 +17,7 @@ ADDRESS = "Mareschstraße 10<br>12055 Berlin<br>Deutschland / Germany"
 BUSINESS_PROFILES = []
 FOUNDER = {
     "@type": "Person", "@id": f"{SITE}/#elliot", "name": "Elliot Lima-Pinto Helt",
-    "jobTitle": "Coach and Counsellor", "url": f"{SITE}/about",
+    "jobTitle": "Counsellor and Coach", "url": f"{SITE}/about",
     "alumniOf": {"@type": "CollegeOrUniversity", "name": "Regis University"},
     "sameAs": ["https://www.instagram.com/elliot.lph/", "https://elliotlph.substack.com"],
 }
@@ -36,7 +36,7 @@ BUSINESS = {
                                   "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
                                   "opens": "14:00", "closes": "21:00"},
     "founder": FOUNDER,
-    "knowsAbout": ["LGBTQ+ coaching", "neurodivergent coaching", "ADHD coaching", "autism",
+    "knowsAbout": ["LGBTQ+ coaching", "neurodivergent coaching", "neurodivergent couples",
                    "polyamory", "ethical non-monogamy", "couples coaching", "couples counselling", "multicultural couples",
                    "immigration and cultural adjustment", "burnout"],
 }
@@ -181,7 +181,7 @@ def card(title, text):
 
 # ---------- HOME ----------
 page("index.html",
-     "Neurospace Coaching | Queer & Neurodivergent Coach and Couples Counsellor — Berlin, Germany",
+     "Neurospace Coaching | Queer & Neurodivergent Counsellor and Coach — Berlin, Germany",
      "Virtual coaching and couples counselling for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats. Based in Berlin, working in English across Europe, North America and beyond.",
      f"""
 <section class="hero hero-photo">
@@ -195,7 +195,7 @@ page("index.html",
 </section>
 <section class="for-you"><div class="wrap"><div class="forlist">
   <h2>This is for you if you're…</h2>
-  <ul class="checks big"><li><a href="queer-couples-coaching.html">LGBTQ+</a></li><li><a href="neurodivergent-coaching.html">Neurodivergent (ADHD, autistic, AuDHD)</a></li><li><a href="polyamory-coaching.html">Polyamorous, ENM or monogamous</a></li><li>Wanting a stronger relationship</li><li>Burnt out at work or in life</li><li>Navigating a major transition</li><li><a href="multicultural-couples-coaching.html">A multicultural couple</a></li><li>An immigrant managing cultural change</li><li>Figuring out who you are</li></ul>
+  <ul class="checks big"><li><a href="queer-couples-coaching.html">LGBTQ+</a></li><li><a href="neurodivergent-coaching.html">Neurodivergent</a></li><li><a href="polyamory-coaching.html">Polyamorous, ENM or monogamous</a></li><li>Wanting a stronger relationship</li><li>Burnt out at work or in life</li><li>Navigating a major transition</li><li><a href="multicultural-couples-coaching.html">A multicultural couple</a></li><li>An immigrant managing cultural change</li><li>Figuring out who you are</li></ul>
   <a class="btn" href="services.html#who">See how I can help →</a>
 </div></div></section>
 
@@ -236,7 +236,7 @@ page("about.html", "About | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap hero-grid">
   <div>
-    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered coach and counsellor in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
+    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered counsellor and coach in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
     <p class="lead">The world is objectively exhausting and terrifying right now and you deserve a space for yourself to decompress and be real.</p>
   </div>
   <div class="blob">{img("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other.", "frame")}</div>
@@ -298,7 +298,7 @@ page("services.html", "Services | Neurospace Coaching",
   <div class="tiles">
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-1"><span class="tile-name">Identity and self-exploration</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-1">Who you are, who you want to be, and what's been getting in the way. We'll get clear on your values, rebuild what's been chipped away, and help you feel solid in who you are.</p></div>
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-2"><span class="tile-name">LGBTQ+</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-2">Coming out, coming into yourself, or living fully as who you are in a world that keeps asking you to explain it. Whether you're just getting curious about your gender or deep in transition, I get it from both professional and personal experience. No educating your coach required. <a class="more" href="queer-couples-coaching.html">Read more →</a></p></div>
-    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-3"><span class="tile-name">Neurodivergent</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-3">ADHD, autism, and more. I don't diagnose, but I help you learn more about how you interact with the world, and we build around how your brain actually works, not how you've been told it should. <a class="more" href="neurodivergent-coaching.html">Read more →</a></p></div>
+    <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-3"><span class="tile-name">Neurodivergent</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-3">However your brain is wired, and however you came to know it. I don't diagnose, but I help you learn more about how you interact with the world, and we build around how your brain actually works, not how you've been told it should. <a class="more" href="neurodivergent-coaching.html">Read more →</a></p></div>
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-4"><span class="tile-name">Non-monogamous or monogamous</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-4">All relationships can be ethical and have their tension points. Polyamory, mono-poly dynamics, queer platonic partnerships, or anything outside the standard script. Whether you're new to non-monogamy or untangling years of patterns, every relationship style gets the same respect here. <a class="more" href="polyamory-coaching.html">Read more →</a></p></div>
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-5"><span class="tile-name">A stronger relationship</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-5">Couples, partners, and polycules navigating communication, conflict, and connection. Less going in circles, more actually hearing each other. You don't have to be in crisis to want support. Let's strengthen what's already there.</p></div>
     <div class="tile"><button class="tile-btn" aria-expanded="false" aria-controls="who-6"><span class="tile-name">Burnout</span><span class="plus" aria-hidden="true"></span></button><p class="tile-body" id="who-6">Running on empty at work or in life. We'll look at what's draining you and what you want to stop carrying, whether that's finding work that doesn't destroy you, advocating for yourself, or navigating being queer or neurodivergent in professional spaces.</p></div>
@@ -318,7 +318,7 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
   <h2>Read more about my specialties</h2>
   <div class="spec-cards">
     <a class="spec-card" href="polyamory-coaching.html"><span class="spec-name">Polyamory &amp; ENM</span><span class="spec-desc">Opening up, mono-poly dynamics, jealousy, agreements and polycules.</span><span class="spec-go">Read more →</span></a>
-    <a class="spec-card" href="neurodivergent-coaching.html"><span class="spec-name">ADHD &amp; autistic adults</span><span class="spec-desc">Coaching and counselling for neurodivergent individuals and couples, built around how your brain actually works.</span><span class="spec-go">Read more →</span></a>
+    <a class="spec-card" href="neurodivergent-coaching.html"><span class="spec-name">Neurodivergent adults &amp; couples</span><span class="spec-desc">Coaching and counselling for neurodivergent individuals and couples, built around how your brain actually works.</span><span class="spec-go">Read more →</span></a>
     <a class="spec-card" href="queer-couples-coaching.html"><span class="spec-name">LGBTQ+ &amp; queer couples</span><span class="spec-desc">Identity, gender, coming out and queer relationships, no educating your coach required.</span><span class="spec-go">Read more →</span></a>
     <a class="spec-card" href="multicultural-couples-coaching.html"><span class="spec-name">Multicultural couples &amp; immigrants</span><span class="spec-desc">Different languages, families and ideas of home, and building a life in a new country.</span><span class="spec-go">Read more →</span></a>
   </div>
@@ -605,7 +605,7 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 <p>E-Mail: <a href="mailto:{EMAIL}">{EMAIL}</a><br>Kontaktformular: <a href="contact.html#form">neurospacecoaching.com/contact</a></p>
 
 <h2>Berufsbezeichnung</h2>
-<p>Coach und Berater (Coaching und psychosoziale Beratung). Coaching und Beratung sind in Deutschland keine reglementierten Berufe; es gelten keine besonderen berufsrechtlichen Regelungen und keine Kammerzugehörigkeit. Coaching und Beratung sind keine Psychotherapie und keine Heilbehandlung.</p>
+<p>Berater und Coach (psychosoziale Beratung und Coaching). Coaching und Beratung sind in Deutschland keine reglementierten Berufe; es gelten keine besonderen berufsrechtlichen Regelungen und keine Kammerzugehörigkeit. Coaching und Beratung sind keine Psychotherapie und keine Heilbehandlung.</p>
 
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Beschwerden können Sie jederzeit an <a href="mailto:{EMAIL}">{EMAIL}</a> richten.</p>
@@ -619,7 +619,7 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 <p>Information pursuant to § 5 of the German Digital Services Act (DDG):</p>
 <p>Elliot Lima-Pinto Helt<br>Neurospace Coaching<br>Self-employed (freelance)<br>{ADDRESS}</p>
 <p><strong>Contact:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="contact.html#form">contact form</a></p>
-<p><strong>Professional title:</strong> Coach and counsellor (coaching and psychosocial counselling). Coaching and counselling are not regulated professions in Germany; no professional chamber or special professional rules apply. They are not psychotherapy or medical treatment.</p>
+<p><strong>Professional title:</strong> Counsellor and coach (psychosocial counselling and coaching). Coaching and counselling are not regulated professions in Germany; no professional chamber or special professional rules apply. They are not psychotherapy or medical treatment.</p>
 <p><strong>Consumer dispute resolution:</strong> I am neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board. You can send complaints to <a href="mailto:{EMAIL}">{EMAIL}</a> at any time.</p>
 <p><strong>Links:</strong> This site links to external websites whose content I don't control. The provider of each linked site is responsible for its content. I'll remove any link promptly if I become aware that it infringes the law.</p>
 </div></section>
@@ -706,13 +706,13 @@ specialty(
 
 specialty(
     "neurodivergent-coaching.html",
-    "ADHD & Autistic Coaching for Adults and Couples, Online | Neurospace Coaching",
-    "Neurodivergent-centered online coaching and counselling for ADHD, autistic and AuDHD adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
-    "Coaching &amp; counselling for ADHD, autistic &amp; AuDHD adults and couples", "Built around how your <mark>brain</mark> works",
+    "Neurodivergent Counselling & Coaching for Adults and Couples, Online | Neurospace Coaching",
+    "Neurodivergent-centered online counselling and coaching for neurodivergent adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
+    "Counselling &amp; coaching for neurodivergent adults and couples", "Built around how your <mark>brain</mark> works",
     "Neurodivergent-centered coaching and counselling for adults and couples who are tired of strategies built for someone else's brain.",
     ("services-2.webp", "A person in a purple sweater and headphones reading a book in a cosy chair"),
     "You're not lazy, broken or too much",
-    "<p>Whether you've known you're ADHD or autistic for years, were recently identified, or are still exploring the question, coaching here starts from how you actually function, not how you've been told you should. I don't diagnose, but I can help you understand your patterns and build a life that fits them.</p>",
+    "<p>Whether you've known you're neurodivergent for years, only recently realised it, or are still exploring the question, coaching here starts from how you actually function, not how you've been told you should. I don't diagnose, but I can help you understand your patterns and build a life that fits them.</p>",
     ["Executive functioning keeps getting in the way of things you genuinely want to do",
      "You're burnt out from masking at work, with family, or in your relationship",
      "You were identified as an adult and are rethinking a lot of your story",
@@ -725,10 +725,9 @@ specialty(
      ("Work and self-advocacy", "Navigating being neurodivergent at work, asking for what you need, or finding work that doesn't flatten you."),
      ("Identity", "Making sense of a late identification and how it intersects with being queer, trans, an immigrant, or all of the above.")],
     [("Do I need a diagnosis to work with you?", "No. Self-identified, formally diagnosed, or just wondering, you're welcome here. Coaching doesn't require or provide a diagnosis."),
-     ("Is this ADHD coaching or autism coaching?", "Both, and everything in between. A lot of my clients are AuDHD or don't fit neatly into one box, and that's fine."),
      ("Can we work on this as a couple?", "Yes. I work with couples where one or both partners are neurodivergent, and with polycules too.")],
-    "ADHD, autistic and AuDHD adults and couples",
-    "Neurodivergent coaching for ADHD and autistic adults and couples")
+    "Neurodivergent adults and couples",
+    "Neurodivergent counselling and coaching for adults and couples")
 
 specialty(
     "queer-couples-coaching.html",
