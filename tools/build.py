@@ -17,7 +17,7 @@ ADDRESS = "Mareschstraße 10<br>12055 Berlin<br>Deutschland / Germany"
 BUSINESS_PROFILES = []
 FOUNDER = {
     "@type": "Person", "@id": f"{SITE}/#elliot", "name": "Elliot Lima-Pinto Helt",
-    "jobTitle": "Coach", "url": f"{SITE}/about",
+    "jobTitle": "Coach and Counsellor", "url": f"{SITE}/about",
     "alumniOf": {"@type": "CollegeOrUniversity", "name": "Regis University"},
     "sameAs": ["https://www.instagram.com/elliot.lph/", "https://elliotlph.substack.com"],
 }
@@ -37,7 +37,7 @@ BUSINESS = {
                                   "opens": "14:00", "closes": "21:00"},
     "founder": FOUNDER,
     "knowsAbout": ["LGBTQ+ coaching", "neurodivergent coaching", "ADHD coaching", "autism",
-                   "polyamory", "ethical non-monogamy", "couples coaching", "multicultural couples",
+                   "polyamory", "ethical non-monogamy", "couples coaching", "couples counselling", "multicultural couples",
                    "immigration and cultural adjustment", "burnout"],
 }
 if BUSINESS_PROFILES:
@@ -49,7 +49,7 @@ WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE}
 def service_schema(file, name, desc, audience):
     return jsonld({
         "@context": "https://schema.org", "@type": "Service", "name": name, "description": desc,
-        "url": f"{SITE}/{file.removesuffix('.html')}", "serviceType": "Coaching",
+        "url": f"{SITE}/{file.removesuffix('.html')}", "serviceType": "Coaching and counselling",
         "provider": {"@id": f"{SITE}/#business"}, "audience": {"@type": "Audience", "audienceType": audience},
         "areaServed": BUSINESS["areaServed"], "availableChannel": {"@type": "ServiceChannel", "name": "Online video sessions"},
     })
@@ -121,7 +121,7 @@ def page(file, title, desc, body, current=None, schema=""):
     <div class="foot-grid">
       <div>
         <a class="brand" href="index.html"><img src="assets/img/ghost-mark-light.webp" alt="" width="210" height="370"><img class="wordmark" src="assets/img/wordmark-light.png" alt="Neurospace Coaching" width="475" height="75"></a>
-        <p>Radical coaching for weirdos. Queer and neurodivergent centered, based in Berlin, working virtually in English.</p>
+        <p>Radical coaching and counselling for weirdos. Queer and neurodivergent centered, based in Berlin, working virtually in English.</p>
       </div>
       <div>
         <h3>Explore</h3>
@@ -153,7 +153,7 @@ const h=document.querySelector('.site-head');addEventListener('scroll',()=>h.cla
 
 CTA = f"""<div class="wrap cta-wrap"><div class="cta">
   <div>
-    <span class="eyebrow">Virtual coaching sessions</span>
+    <span class="eyebrow">Virtual coaching &amp; counselling sessions</span>
     <h2>Ready to start?</h2>
     <p>A free consult is a great time to ask me questions and feel out the vibe.</p>
     <p class="cta-mail"><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a></p>
@@ -187,7 +187,7 @@ page("index.html",
 <section class="hero hero-photo">
   <div class="wrap">
     <div class="hero-copy">
-      <h1>{kicker("Queer, neurodivergent &amp; non-monogamous coaching · online from Berlin")}This is for the <mark>weirdos</mark></h1>
+      <h1>{kicker("Queer, neurodivergent &amp; non-monogamous coaching and counselling · online from Berlin")}This is for the <mark>weirdos</mark></h1>
       <p class="lead">Stop living for others and start dealing with the real sh*t</p>
       <div class="hero-actions"><a class="btn orchid" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a><a class="btn ghost-btn" href="services.html">See services</a></div>
     </div>
@@ -232,11 +232,11 @@ page("index.html",
 
 # ---------- ABOUT ----------
 page("about.html", "About | Neurospace Coaching",
-     "Queer and neurodivergent centered coaching with Elliot (they/she), a former therapist based in Berlin.",
+     "Queer and neurodivergent centered coaching and counselling with Elliot (they/she), a former therapist based in Berlin.",
      f"""
 <section class="page-hero"><div class="wrap hero-grid">
   <div>
-    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered coach in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
+    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered coach and counsellor in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
     <p class="lead">The world is objectively exhausting and terrifying right now and you deserve a space for yourself to decompress and be real.</p>
   </div>
   <div class="blob">{img("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other.", "frame")}</div>
@@ -246,7 +246,7 @@ page("about.html", "About | Neurospace Coaching",
   <div><span class="eyebrow">Queer &amp; Neurodivergent Centered</span><h2>Here, you get to just be you</h2></div>
   <div class="prose">
     <p>A lot of people are using the word “affirming” and while it’s great to see overall, I think we’re getting lost in the sauce and the term is over-saturated.</p>
-    <p>In my coaching practice I’m all about those of us who are called freaks, weirdos, and outsiders. Although I have come to a place where I can now embrace and celebrate who I am, it doesn’t mean those words don’t still carry weight.</p>
+    <p>In my coaching and counselling practice I’m all about those of us who are called freaks, weirdos, and outsiders. Although I have come to a place where I can now embrace and celebrate who I am, it doesn’t mean those words don’t still carry weight.</p>
     <p>But here, you get to release that burden and just be you. And from there, be the version of yourself you have been working towards for years. Things are tough. I am here to make it a bit easier for you so that the good days get longer and the bad days pass easier.</p>
     <a class="btn" href="contact.html">Get started</a>
   </div>
@@ -285,10 +285,10 @@ page("about.html", "About | Neurospace Coaching",
 
 # ---------- SERVICES ----------
 page("services.html", "Services | Neurospace Coaching",
-     "Individual, relationship and polycule coaching for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats navigating cultural change.",
+     "Individual, relationship and polycule coaching and counselling for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats navigating cultural change.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Online coaching for individuals, couples &amp; polycules")}Ways we can <mark>work</mark> together</h1>
+  <h1>{kicker("Online coaching &amp; counselling for individuals, couples &amp; polycules")}Ways we can <mark>work</mark> together</h1>
 </div></section>
 
 <section id="who" style="padding-top:0"><div class="wrap">
@@ -318,7 +318,7 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
   <h2>Read more about my specialties</h2>
   <div class="spec-cards">
     <a class="spec-card" href="polyamory-coaching.html"><span class="spec-name">Polyamory &amp; ENM</span><span class="spec-desc">Opening up, mono-poly dynamics, jealousy, agreements and polycules.</span><span class="spec-go">Read more →</span></a>
-    <a class="spec-card" href="neurodivergent-coaching.html"><span class="spec-name">ADHD &amp; autistic adults</span><span class="spec-desc">Coaching for neurodivergent individuals and couples, built around how your brain actually works.</span><span class="spec-go">Read more →</span></a>
+    <a class="spec-card" href="neurodivergent-coaching.html"><span class="spec-name">ADHD &amp; autistic adults</span><span class="spec-desc">Coaching and counselling for neurodivergent individuals and couples, built around how your brain actually works.</span><span class="spec-go">Read more →</span></a>
     <a class="spec-card" href="queer-couples-coaching.html"><span class="spec-name">LGBTQ+ &amp; queer couples</span><span class="spec-desc">Identity, gender, coming out and queer relationships, no educating your coach required.</span><span class="spec-go">Read more →</span></a>
     <a class="spec-card" href="multicultural-couples-coaching.html"><span class="spec-name">Multicultural couples &amp; immigrants</span><span class="spec-desc">Different languages, families and ideas of home, and building a life in a new country.</span><span class="spec-go">Read more →</span></a>
   </div>
@@ -326,11 +326,11 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
 
 <section><div class="wrap">
   <span class="eyebrow">Session options</span>
-  <h2>Individual, relationship &amp; polycule coaching</h2>
+  <h2>Individual, relationship &amp; polycule coaching and counselling</h2>
   <div class="cards">
-    <div class="card"><h3>Individual Coaching</h3><p>Individual coaching is one-on-one work for people who feel stuck, overwhelmed, or like something just isn't working. We'll look at what's actually going on—the patterns keeping you where you are, the stuff you're carrying from the past, the gap between who you are and how you're living. Then we'll figure out what to do about it. You'll leave with real tools and a clearer sense of yourself.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
-    <div class="card"><h3>Relationship Coaching</h3><p>Partner coaching is where we figure out why you keep having the same fights and what's actually underneath them. We'll look at your patterns and how you communicate (or don't), what you're really needing from each other, and what old stuff is bleeding into the present. Then we'll work on practical ways to talk to each other, handle conflict, and stop letting the same issues take you down.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
-    <div class="card"><h3>Polycule Relationship Coaching</h3><p>Polycule coaching is group work for multi-partner relationships that need help with the complicated stuff, communication breakdowns, conflicting needs, unclear boundaries, or just figuring out how to make it all work. We'll tackle the dynamics that are causing friction and build practical skills for navigating conflict, setting boundaries, and actually showing up for each other. Whether you're new to this or trying to untangle years of patterns, this is where you work on it together.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
+    <div class="card"><h3>Individual Coaching &amp; Counselling</h3><p>Individual coaching and counselling is one-on-one work for people who feel stuck, overwhelmed, or like something just isn't working. We'll look at what's actually going on—the patterns keeping you where you are, the stuff you're carrying from the past, the gap between who you are and how you're living. Then we'll figure out what to do about it. You'll leave with real tools and a clearer sense of yourself.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
+    <div class="card"><h3>Relationship Coaching &amp; Couples Counselling</h3><p>Relationship coaching and couples counselling is where we figure out why you keep having the same fights and what's actually underneath them. We'll look at your patterns and how you communicate (or don't), what you're really needing from each other, and what old stuff is bleeding into the present. Then we'll work on practical ways to talk to each other, handle conflict, and stop letting the same issues take you down.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
+    <div class="card"><h3>Polycule Coaching &amp; Counselling</h3><p>Polycule coaching and counselling is group work for multi-partner relationships that need help with the complicated stuff, communication breakdowns, conflicting needs, unclear boundaries, or just figuring out how to make it all work. We'll tackle the dynamics that are causing friction and build practical skills for navigating conflict, setting boundaries, and actually showing up for each other. Whether you're new to this or trying to untangle years of patterns, this is where you work on it together.</p><p><a href="sliding-scale.html">Reduced Rate Info</a></p></div>
   </div>
   <p style="margin-top:32px"><a class="btn" href="contact.html">Get started</a></p>
 </div></section>
@@ -338,10 +338,10 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
 
 <section class="band lilac"><div class="wrap split flip">
   <div class="prose">
-    <span class="eyebrow">Why Coaching?</span>
-    <h2>Why Coaching?</h2>
-    <p>Let’s talk about if coaching might be a good, or better, fit for you and what to actually expect to gain from this work together.</p>
-    <h3>First, what’s the difference between coaching and therapy?</h3>
+    <span class="eyebrow">Why coaching &amp; counselling?</span>
+    <h2>Why coaching &amp; counselling?</h2>
+    <p>Let’s talk about if coaching and counselling might be a good, or better, fit for you and what to actually expect to gain from this work together.</p>
+    <h3>First, what’s the difference between coaching and counselling, and therapy?</h3>
     <p>These aren't totally separate worlds, and I won't pretend they are. My clinical background means I understand emotional patterns, relationship dynamics, and the specific weight that queer and neurodivergent folks carry. It also means I know when someone needs more than coaching can offer. If you're in crisis, dealing with severe mental health symptoms, or need trauma processing, therapy is the right call — and I'll tell you that directly.</p>
   </div>
   {img("laughing.webp", "Two men are laughing and hugging each other, one is wearing a white t-shirt and the other is in a dark shirt.")}
@@ -352,14 +352,15 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
     <li>You're dealing with active trauma or PTSD</li>
     <li>You're in crisis or having thoughts of self-harm</li>
     <li>You need someone who can provide clinical treatment and potentially coordinate with psychiatrists or other medical providers</li></ul></div>
-  <div class="card"><h3>Coaching</h3><p>Coaching is about moving forward. We're not treating mental health conditions or diagnosing anything. Instead, we're focused on who you want to become and what you want your life to look like - whether that's figuring out your identity, navigating relationship dynamics, dealing with career burnout, or building the skills to communicate better with your partner(s).</p><p><strong>Coaching with me is right for you if:</strong></p><ul class="checks">
+  <div class="card"><h3>Coaching &amp; Counselling</h3><p>Coaching and counselling are about moving forward. We're not treating mental health conditions or diagnosing anything. Instead, we're focused on who you want to become and what you want your life to look like - whether that's figuring out your identity, navigating relationship dynamics, dealing with career burnout, or building the skills to communicate better with your partner(s).</p><p><strong>Working with me is right for you if:</strong></p><ul class="checks">
     <li>You're generally functioning but feel stuck or unfulfilled</li>
     <li>You want to explore your identity or values</li>
     <li>You're dealing with relationship stuff (including navigating non-monogamy)</li>
     <li>You need someone to help you figure out your next move, not just process your feelings</li>
     <li>You're tired of being pathologized and want someone who gets that being queer or neurodivergent isn't something to "fix"</li></ul></div>
 </div>
-<p style="margin-top:32px">Still not sure? Let's talk about it in a consultation.</p>
+<p class="us-note" style="margin-top:32px"><strong>Clients in the U.S.:</strong> I work with U.S.-based clients as a coach only. I no longer practise as a licensed therapist, and our work isn't therapy or counselling under U.S. state licensing.</p>
+<p>Still not sure? Let's talk about it in a consultation.</p>
 <a class="btn ghost-btn" href="contact.html">Contact me</a>
 </div></section>
 
@@ -368,7 +369,7 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
   <div class="prose">
     <span class="eyebrow">What to expect</span>
     <h2>What to expect</h2>
-    <p>Neither coaching or therapy change your life in an instant and I will never imply or promise that outcome to clients. Coaching is a real investment in yourself, your relationships, and where you're headed. Change takes effort and intentionality. My job is to help you figure out what needs to shift, and reinforce what's already working, so you feel clearer and more capable of actually moving.</p>
+    <p>Neither coaching, counselling nor therapy changes your life in an instant and I will never imply or promise that outcome to clients. This work is a real investment in yourself, your relationships, and where you're headed. Change takes effort and intentionality. My job is to help you figure out what needs to shift, and reinforce what's already working, so you feel clearer and more capable of actually moving.</p>
     <p>This is about reclaiming agency. We'll use your core values as a compass and build toward goals you actually care about so that even on the bad days, you have something to orient toward. A session might look like mapping out the next few months to get your work-life balance under control, unpacking a conflict pattern that keeps blowing up your relationship, or literally figuring out how to do the dishes when your executive functioning has left the building.</p>
     <p>This isn't just venting. We'll talk through your feelings, absolutely, but the goal is always movement. I'll challenge you, ask uncomfortable questions, and hold you to the changes you say you want to make. I'm supportive as hell, but I'm not here to validate everything you do (unlike ChatGPT).</p>
     <p>A lot of people come to me having felt stuck in therapy. It usually comes down to the same few things: expecting change to be fast, avoiding the real shit, and having no actual plan for moving forward. Coaching is structured differently. We're not just processing, we're building.</p>
@@ -379,12 +380,12 @@ b.addEventListener('click',()=>{{const o=b.getAttribute('aria-expanded')!=='true
 """, "services.html")
 
 # ---------- APPROACH ----------
-page("approach.html", "My Coaching Approach | Neurospace Coaching",
-     "Evidence-based, intuitive and creative coaching built on authenticity, agency and autonomy.",
+page("approach.html", "My Approach | Neurospace Coaching",
+     "Evidence-based, intuitive and creative coaching and counselling built on authenticity, agency and autonomy.",
      f"""
 <section class="page-hero"><div class="wrap">
   <div class="prose">
-    <h1>{kicker("Evidence-based, queer &amp; neurodivergent-centered coaching")}My Coaching <mark>Approach</mark></h1>
+    <h1>{kicker("Evidence-based, queer &amp; neurodivergent-centered coaching and counselling")}My Coaching <mark>Approach</mark></h1>
     <p class="lead">I see myself as someone who stands alongside people through the real complexity of life— not above it, not outside it.</p>
     <p>My approach is evidence-based, intuitive, and creative. I think of coaching as a kind of alchemy: multiple things have to come together to create genuine change. For me, those are authenticity, agency, and autonomy. Whatever you're bringing to this work, those three things are the foundation.</p>
     <p>Let's talk and see where it goes.</p>
@@ -419,7 +420,7 @@ page("sliding-scale.html", "Fee Structure & Cost | Neurospace Coaching",
      "Sliding-scale session fees based on client-reported income, for clients in the US, UK and EU.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Coaching session fees · sliding scale")}Fee Structure &amp; <mark>Cost</mark></h1>
+  <h1>{kicker("Coaching &amp; counselling session fees · sliding scale")}Fee Structure &amp; <mark>Cost</mark></h1>
   <p class="lead">Session cost operates based on a sliding scale structure determined by client-reported income.</p>
   <div class="price-grid">
     <div class="price"><span class="tag">Bracket A</span><h3>Constrained</h3><p>Enough to cover essentials, utilities, and basic bills. Savings are minimal or non-existent. Prioritizing needs over wants.</p>
@@ -447,8 +448,8 @@ page("contact.html", "Contact | Neurospace Coaching",
      "Book a free consultation with Neurospace Coaching or send a message.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Book a free online coaching consultation")}Let’s Get <mark>Started</mark></h1>
-  <p class="lead">If you’re interested in starting coaching with me or have questions, please reach out and I will be excited to connect.</p>
+  <h1>{kicker("Book a free online consultation")}Let’s Get <mark>Started</mark></h1>
+  <p class="lead">If you’re interested in starting coaching or counselling with me or have questions, please reach out and I will be excited to connect.</p>
 </div></section>
 
 <section class="band lime" id="book"><div class="wrap book">
@@ -471,7 +472,7 @@ page("contact.html", "Contact | Neurospace Coaching",
     <span class="eyebrow">Or write to me</span>
     <h2>Send me a message</h2>
     <div class="card" style="margin-top:20px">
-      <h3>Radical Coaching for Weirdos</h3>
+      <h3>Radical Coaching &amp; Counselling for Weirdos</h3>
       <p><strong>Email:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a><br><strong>Hours:</strong> {HOURS}</p>
     </div>
   </div>
@@ -604,7 +605,7 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 <p>E-Mail: <a href="mailto:{EMAIL}">{EMAIL}</a><br>Kontaktformular: <a href="contact.html#form">neurospacecoaching.com/contact</a></p>
 
 <h2>Berufsbezeichnung</h2>
-<p>Coach. Coaching ist in Deutschland kein reglementierter Beruf; es gelten keine besonderen berufsrechtlichen Regelungen und keine Kammerzugehörigkeit. Coaching ist keine Psychotherapie und keine Heilbehandlung.</p>
+<p>Coach und Berater (Coaching und psychosoziale Beratung). Coaching und Beratung sind in Deutschland keine reglementierten Berufe; es gelten keine besonderen berufsrechtlichen Regelungen und keine Kammerzugehörigkeit. Coaching und Beratung sind keine Psychotherapie und keine Heilbehandlung.</p>
 
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Beschwerden können Sie jederzeit an <a href="mailto:{EMAIL}">{EMAIL}</a> richten.</p>
@@ -618,7 +619,7 @@ page("impressum.html", "Impressum | Neurospace Coaching", "Legal notice (Impress
 <p>Information pursuant to § 5 of the German Digital Services Act (DDG):</p>
 <p>Elliot Lima-Pinto Helt<br>Neurospace Coaching<br>Self-employed (freelance)<br>{ADDRESS}</p>
 <p><strong>Contact:</strong> <a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="contact.html#form">contact form</a></p>
-<p><strong>Professional title:</strong> Coach. Coaching is not a regulated profession in Germany; no professional chamber or special professional rules apply. Coaching is not psychotherapy or medical treatment.</p>
+<p><strong>Professional title:</strong> Coach and counsellor (coaching and psychosocial counselling). Coaching and counselling are not regulated professions in Germany; no professional chamber or special professional rules apply. They are not psychotherapy or medical treatment.</p>
 <p><strong>Consumer dispute resolution:</strong> I am neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board. You can send complaints to <a href="mailto:{EMAIL}">{EMAIL}</a> at any time.</p>
 <p><strong>Links:</strong> This site links to external websites whose content I don't control. The provider of each linked site is responsible for its content. I'll remove any link promptly if I become aware that it infringes the law.</p>
 </div></section>
@@ -635,7 +636,8 @@ HOW_IT_WORKS = f"""<section class="band lilac"><div class="wrap split">
       <li>Fees follow a <a href="sliding-scale.html">sliding scale</a> (€100–€160 per session, adjusted to your local currency).</li>
       <li>We start with a free consultation to see whether working together feels right.</li>
     </ul>
-    <p>Coaching isn't psychotherapy and I don't diagnose or treat mental health conditions. If you need clinical care, I'll tell you directly and help you think about where to find it.</p>
+    <p>Coaching and counselling aren't psychotherapy, and I don't diagnose or treat mental health conditions. If you need clinical care, I'll tell you directly and help you think about where to find it.</p>
+    <p class="us-note"><strong>Clients in the U.S.:</strong> I work with U.S.-based clients as a coach only. I no longer practise as a licensed therapist, and our work isn't therapy or counselling under U.S. state licensing.</p>
     <a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consult ↗</a>
   </div>
 </div></section>"""
@@ -662,7 +664,7 @@ def specialty(file, title, desc, kick, h1, lead, image, intro_h2, intro, familia
 </div></section>
 
 <section><div class="wrap">
-  <span class="eyebrow">What we'd work on</span><h2>What coaching with me looks like</h2>
+  <span class="eyebrow">What we'd work on</span><h2>What working with me looks like</h2>
   <div class="cards">{"".join(card(t, x) for t, x in work_cards)}</div>
 </div></section>
 
@@ -679,9 +681,9 @@ def specialty(file, title, desc, kick, h1, lead, image, intro_h2, intro, familia
 specialty(
     "polyamory-coaching.html",
     "Polyamory & ENM Relationship Coaching, Online | Neurospace Coaching",
-    "Online polyamory and ethical non-monogamy (ENM) coaching for individuals, couples and polycules. Opening up, mono-poly relationships, jealousy, agreements. In English, based in Berlin.",
-    "Polyamory &amp; ENM relationship coaching", "Non-monogamy, <mark>minus</mark> the chaos",
-    "Coaching for people opening up, already non-monogamous, or somewhere in between, solo, as a couple, or as a whole polycule.",
+    "Online polyamory and ethical non-monogamy (ENM) coaching and counselling for individuals, couples and polycules. Opening up, mono-poly relationships, jealousy, agreements. In English, based in Berlin.",
+    "Polyamory &amp; ENM coaching and counselling", "Non-monogamy, <mark>minus</mark> the chaos",
+    "Coaching and counselling for people opening up, already non-monogamous, or somewhere in between, solo, as a couple, or as a whole polycule.",
     ("laughing.webp", "Two men laughing and hugging each other"),
     "Non-monogamy is a skill set, not a personality test",
     "<p>Polyamory and ethical non-monogamy can be deeply good for people. They can also surface every insecurity, communication gap and unspoken expectation at once. None of that means you're doing it wrong. It means you're doing something most of us never had a model for.</p>",
@@ -705,9 +707,9 @@ specialty(
 specialty(
     "neurodivergent-coaching.html",
     "ADHD & Autistic Coaching for Adults and Couples, Online | Neurospace Coaching",
-    "Neurodivergent-centered online coaching for ADHD, autistic and AuDHD adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
-    "Coaching for ADHD, autistic &amp; AuDHD adults and couples", "Built around how your <mark>brain</mark> works",
-    "Neurodivergent-centered coaching for adults and couples who are tired of strategies built for someone else's brain.",
+    "Neurodivergent-centered online coaching and counselling for ADHD, autistic and AuDHD adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
+    "Coaching &amp; counselling for ADHD, autistic &amp; AuDHD adults and couples", "Built around how your <mark>brain</mark> works",
+    "Neurodivergent-centered coaching and counselling for adults and couples who are tired of strategies built for someone else's brain.",
     ("services-2.webp", "A person in a purple sweater and headphones reading a book in a cosy chair"),
     "You're not lazy, broken or too much",
     "<p>Whether you've known you're ADHD or autistic for years, were recently identified, or are still exploring the question, coaching here starts from how you actually function, not how you've been told you should. I don't diagnose, but I can help you understand your patterns and build a life that fits them.</p>",
@@ -731,9 +733,9 @@ specialty(
 specialty(
     "queer-couples-coaching.html",
     "LGBTQ+ & Queer Couples Coaching, Online | Neurospace Coaching",
-    "Online coaching for LGBTQ+ individuals and queer couples: communication, conflict, gender identity, coming out, and relationships outside the standard script. In English, based in Berlin.",
-    "LGBTQ+ &amp; queer couples coaching", "Queer love, <mark>no translation</mark> needed",
-    "Coaching for queer and trans people and their relationships, with a coach who doesn't need the basics explained.",
+    "Online coaching and counselling for LGBTQ+ individuals and queer couples: communication, conflict, gender identity, coming out, and relationships outside the standard script. In English, based in Berlin.",
+    "LGBTQ+ &amp; queer couples coaching and counselling", "Queer love, <mark>no translation</mark> needed",
+    "Coaching and counselling for queer and trans people and their relationships, with someone who doesn't need the basics explained.",
     ("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other."),
     "Your relationship doesn't have to fit anyone else's script",
     "<p>Queer relationships come with their own strengths and their own pressures: family who don't get it, gender and identity shifting over time, chosen family, and few models for what a good relationship can look like. I bring both professional and personal experience to this work, so you can spend sessions on your life, not educating your coach.</p>",
@@ -749,7 +751,7 @@ specialty(
      ("Intimacy and connection", "Reconnecting when life, stress or old stuff has created distance between you."),
      ("Relationship structure", "Monogamous, open, polyamorous or something else: <a href='polyamory-coaching.html'>non-monogamy coaching</a> is part of what I do too.")],
     [("Do you only work with queer couples?", "My practice centers LGBTQ+ people, and I also work with individuals and with straight couples where one partner is queer, trans or questioning."),
-     ("Is this couples therapy?", "It's coaching, which means we focus on where you want to go and how to get there rather than diagnosing or treating anything. If you need couples therapy, I'll say so."),
+     ("Is this couples therapy?", "It's coaching and couples counselling, which means we focus on where you want to go and how to get there rather than diagnosing or treating anything. If you need couples therapy, I'll say so."),
      ("Can we do sessions from different locations?", "Yes. Sessions are online, so you can join together or from separate places.")],
     "LGBTQ+ individuals and queer couples",
     "LGBTQ+ and queer couples coaching")
@@ -757,9 +759,9 @@ specialty(
 specialty(
     "multicultural-couples-coaching.html",
     "Multicultural Couples & Immigrant Coaching, Online from Berlin | Neurospace Coaching",
-    "Online coaching in English for multicultural and cross-cultural couples, immigrants and expats in Berlin, Germany and across Europe: culture, family, language, belonging.",
-    "Multicultural couples &amp; immigrant coaching", "Two cultures, one <mark>relationship</mark>",
-    "Coaching for cross-cultural couples and for immigrants building a life in a new country, from someone who's living it too.",
+    "Online coaching and counselling in English for multicultural and cross-cultural couples, immigrants and expats in Berlin, Germany and across Europe: culture, family, language, belonging.",
+    "Multicultural couples &amp; immigrant coaching and counselling", "Two cultures, one <mark>relationship</mark>",
+    "Coaching and counselling for cross-cultural couples and for immigrants building a life in a new country, from someone who's living it too.",
     ("graffiti.webp", "Blue and yellow graffiti painted on a wooden wall"),
     "Love across languages, families and ideas of home",
     "<p>Multicultural relationships bring a lot of richness, and a lot to negotiate: different expectations about family, money, roles and conflict, often in a language that isn't one partner's first. Add a move to a new country and things get heavier. I'm in a cross-cultural relationship and relocated to Berlin myself, so I know this from the inside.</p>",
@@ -776,7 +778,7 @@ specialty(
      ("Big decisions", "Where to live, whether to stay, and how to plan a future that works for both of you.")],
     [("Do you work only with couples living in Berlin?", "No. Sessions are online, so I work with couples and individuals across Germany, Europe, the UK and North America."),
      ("We speak different first languages. Is English OK?", "Sessions are in English. Many of my clients speak English as a second or third language, and we'll go at whatever pace works."),
-     ("Can I come on my own?", "Yes. Individual coaching for immigrants and people adjusting to a new country is a big part of what I do.")],
+     ("Can I come on my own?", "Yes. Individual coaching and counselling for immigrants and people adjusting to a new country is a big part of what I do.")],
     "Multicultural and cross-cultural couples, immigrants and expats",
     "Multicultural couples and immigrant coaching")
 
