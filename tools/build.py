@@ -435,7 +435,6 @@ page("sliding-scale.html", "Fee Structure & Cost | Neurospace Coaching",
   {img("sliding.webp", "")}
   <div class="prose">
     <p>The best approach is to use these ranges as a starting point rather than rigid requirements. Consider your personal situation and talk with me directly if you have questions or concerns.</p>
-    <p>**I work with clients across the US, UK, and EU. Fees are adjusted accordingly to your local currency.</p>
     <h2>Questions? Reach out and let’s talk about it.</h2>
     <p style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book a free consultation ↗</a><a class="btn ghost-btn" href="contact.html">Contact me</a></p>
   </div>
