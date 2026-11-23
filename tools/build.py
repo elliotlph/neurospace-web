@@ -235,7 +235,7 @@ page("about.html", "About | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap hero-grid">
   <div>
-    <h1>{kicker("About Elliot · queer &amp; neurodivergent-centered counsellor and coach in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
+    <h1>{kicker("Counsellor &amp; coach in Berlin")}It’s 2026, we’re dropping the <mark>mask</mark></h1>
     <p class="lead">The world is objectively exhausting and terrifying right now and you deserve a space for yourself to decompress and be real.</p>
   </div>
   <div class="blob">{img("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other.", "frame")}</div>
@@ -287,7 +287,7 @@ page("services.html", "Services | Neurospace Coaching",
      "Individual, relationship and polycule coaching and counselling for queer, neurodivergent and non-monogamous people, multicultural couples, and immigrants and expats navigating cultural change.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Online coaching &amp; counselling for individuals, couples &amp; polycules")}Ways we can <mark>work</mark> together</h1>
+  <h1>{kicker("Individuals, couples &amp; polycules")}Ways we can <mark>work</mark> together</h1>
 </div></section>
 
 <section id="who" style="padding-top:0"><div class="wrap">
@@ -384,7 +384,7 @@ page("approach.html", "My Approach | Neurospace Coaching",
      f"""
 <section class="page-hero"><div class="wrap">
   <div class="prose">
-    <h1>{kicker("Evidence-based, queer &amp; neurodivergent-centered coaching and counselling")}My Coaching <mark>Approach</mark></h1>
+    <h1>{kicker("Evidence-based &amp; queer-centered")}My Coaching <mark>Approach</mark></h1>
     <p class="lead">I see myself as someone who stands alongside people through the real complexity of life— not above it, not outside it.</p>
     <p>My approach is evidence-based, intuitive, and creative. I think of coaching as a kind of alchemy: multiple things have to come together to create genuine change. For me, those are authenticity, agency, and autonomy. Whatever you're bringing to this work, those three things are the foundation.</p>
     <p>Let's talk and see where it goes.</p>
@@ -419,7 +419,7 @@ page("sliding-scale.html", "Fee Structure & Cost | Neurospace Coaching",
      "Sliding-scale session fees based on client-reported income, for clients in the US, UK and EU.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Coaching &amp; counselling session fees · sliding scale")}Fee Structure &amp; <mark>Cost</mark></h1>
+  <h1>{kicker("Sliding scale fees")}Fee Structure &amp; <mark>Cost</mark></h1>
   <p class="lead">Session cost operates based on a sliding scale structure determined by client-reported income.</p>
   <div class="price-grid">
     <div class="price"><span class="tag">Bracket A</span><h3>Constrained</h3><p>Enough to cover essentials, utilities, and basic bills. Savings are minimal or non-existent. Prioritizing needs over wants.</p>
@@ -447,7 +447,7 @@ page("contact.html", "Contact | Neurospace Coaching",
      "Book a free consultation with Neurospace Coaching or send a message.",
      f"""
 <section class="page-hero"><div class="wrap">
-  <h1>{kicker("Book a free online consultation")}Let’s Get <mark>Started</mark></h1>
+  <h1>{kicker("Free consultation")}Let’s Get <mark>Started</mark></h1>
   <p class="lead">If you’re interested in starting coaching or counselling with me or have questions, please reach out and I will be excited to connect.</p>
 </div></section>
 
@@ -681,7 +681,7 @@ specialty(
     "polyamory-coaching.html",
     "Polyamory & ENM Relationship Coaching, Online | Neurospace Coaching",
     "Online polyamory and ethical non-monogamy (ENM) coaching and counselling for individuals, couples and polycules. Opening up, mono-poly relationships, jealousy, agreements. In English, based in Berlin.",
-    "Polyamory &amp; ENM coaching and counselling", "Non-monogamy, <mark>minus</mark> the chaos",
+    "Polyamory &amp; ENM", "Non-monogamy, <mark>minus</mark> the chaos",
     "Coaching and counselling for people opening up, already non-monogamous, or somewhere in between, solo, as a couple, or as a whole polycule.",
     ("laughing.webp", "Two men laughing and hugging each other"),
     "Non-monogamy is a skill set, not a personality test",
@@ -707,7 +707,7 @@ specialty(
     "neurodivergent-coaching.html",
     "Neurodivergent Counselling & Coaching for Adults and Couples, Online | Neurospace Coaching",
     "Neurodivergent-centered online counselling and coaching for neurodivergent adults and couples. Executive functioning, burnout, unmasking, relationships. In English, based in Berlin.",
-    "Counselling &amp; coaching for neurodivergent adults and couples", "Built around how your <mark>brain</mark> works",
+    "Neurodivergent adults &amp; couples", "Built around how your <mark>brain</mark> works",
     "Neurodivergent-centered coaching and counselling for adults and couples who are tired of strategies built for someone else's brain.",
     ("services-2.webp", "A person in a purple sweater and headphones reading a book in a cosy chair"),
     "You're not lazy, broken or too much",
@@ -732,7 +732,7 @@ specialty(
     "queer-couples-coaching.html",
     "LGBTQ+ & Queer Couples Coaching, Online | Neurospace Coaching",
     "Online coaching and counselling for LGBTQ+ individuals and queer couples: communication, conflict, gender identity, coming out, and relationships outside the standard script. In English, based in Berlin.",
-    "LGBTQ+ &amp; queer couples coaching and counselling", "Queer love, <mark>no translation</mark> needed",
+    "LGBTQ+ &amp; queer couples", "Queer love, <mark>no translation</mark> needed",
     "Coaching and counselling for queer and trans people and their relationships, with someone who doesn't need the basics explained.",
     ("couple.webp", "Two women with different skin tones and curly hair lying on a bed, kissing each other."),
     "Your relationship doesn't have to fit anyone else's script",
@@ -758,7 +758,7 @@ specialty(
     "multicultural-couples-coaching.html",
     "Multicultural Couples & Immigrant Coaching, Online from Berlin | Neurospace Coaching",
     "Online coaching and counselling in English for multicultural and cross-cultural couples, immigrants and expats in Berlin, Germany and across Europe: culture, family, language, belonging.",
-    "Multicultural couples &amp; immigrant coaching and counselling", "Two cultures, one <mark>relationship</mark>",
+    "Multicultural couples &amp; immigrants", "Two cultures, one <mark>relationship</mark>",
     "Coaching and counselling for cross-cultural couples and for immigrants building a life in a new country, from someone who's living it too.",
     ("graffiti.webp", "Blue and yellow graffiti painted on a wooden wall"),
     "Love across languages, families and ideas of home",
