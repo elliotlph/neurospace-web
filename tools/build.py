@@ -223,8 +223,7 @@ page("index.html",
 </div></section>
 
 <section><div class="wrap">
-  <span class="eyebrow">My Coaching Values</span>
-  <h2>Authenticity, agency, autonomy</h2>
+  <h2>My coaching values</h2>
   {VALUES_HOME}
 </div></section>
 {CTA}
